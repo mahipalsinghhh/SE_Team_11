@@ -20,25 +20,28 @@ SE_Team_11/
 ├── mini_project/    # Semester mini-project (details TBD)
 └── README.md
 ```
-Mini-Project
-Title: TBD
+Each lab folder contains individual submissions from all team members, following the naming convention agreed for that lab (e.g. sr_name.pdf).
 
-Problem Statement: TBD
+## Mini-Project
 
-Tech Stack: TBD
+* **Title:** Remote Lab Reservation System[cite: 3]
+* **Problem Statement:** A booking portal for students to reserve lab equipment timeslots, view calendar availability, and receive automated email reminders. The project combines calendar UI widgets, RESTful endpoints, and a scheduling engine with conflict detection.[cite: 3]
+* **Tech Stack:** *TBD*
 
 This section will be updated once the mini-project topic and stack are finalized.
 
-Contribution Guidelines
-git pull origin main before you start any work, to avoid overwriting a teammate's push.
+---
 
-Commit with clear messages (e.g. "Add lab_01 flow spec", "Add mini-project ER diagram").
+## Contribution Guidelines
 
-Keep each person's files clearly named/scoped within shared folders so contributions don't collide.
+* `git pull origin main` before you start any work, to avoid overwriting a teammate's push.
+* Commit with clear messages (e.g. `"Add lab_01 flow spec"`, `"Add mini-project ER diagram"`).
+* Keep each person's files clearly named/scoped within shared folders so contributions don't collide.
+* Push directly to `main` for now (branch/PR workflow can be added later if the team wants stricter review for the mini-project).
 
-Push directly to main for now (branch/PR workflow can be added later if the team wants stricter review for the mini-project).
+---
 
-Course Info
-Course: Software Engineering
+## Course Info
 
-Department: CSE(AIML), PES University
+* **Course:** Software Engineering
+* **Department:** CSE(AIML), PES University
