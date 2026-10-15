@@ -1,0 +1,1192 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 4
+/Kids [ 4 0 R 11 0 R 14 0 R 20 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+4 0 obj
+<<
+/Contents 5 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font <<
+/F1 6 0 R
+/F1-0 7 0 R
+/F2 8 0 R
+/F3 9 0 R
+/F4 10 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Annots [ ]
+/Parent 2 0 R
+>>
+endobj
+5 0 obj
+<<
+/Length 5930
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+BT /F2 8 Tf 9.6 TL ET
+BT 1 0 0 1 51.02362 805.0394 Tm (PES UNIVERSITY | DEPARTMENT OF CSE | SOFTWARE ENGINEERING) Tj T* ET
+0 0 0 RG
+.5 w
+n 51.02362 796.5354 m 544.252 796.5354 l S
+BT /F1 7 Tf 8.4 TL ET
+BT 1 0 0 1 51.02362 25.51181 Tm (Mahipal Singh | PES1UG24AM153 | Section B) Tj T* ET
+BT 1 0 0 1 540.36 25.51181 Tm (1) Tj T* ET
+Q
+q
+1 0 0 1 45.68504 754.5276 cm
+q
+BT 1 0 0 1 0 3 Tm 19 TL /F2 16 Tf 0 0 0 rg (Lab 1: Requirements Engineering & UML Use-Case Modelling) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 737.0276 cm
+q
+BT 1 0 0 1 0 1.8 Tm 9.5 TL /F2 7.7 Tf 0 0 0 rg (Name:) Tj /F1 7.7 Tf ( Mahipal Singh  ) Tj (  ) Tj /F2 7.7 Tf (SRN:) Tj /F1 7.7 Tf ( PES1UG24AM153  ) Tj (  ) Tj /F2 7.7 Tf (Section:) Tj /F1 7.7 Tf ( B) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 733.0276 cm
+Q
+q
+1 0 0 1 45.68504 717.5276 cm
+q
+BT 1 0 0 1 0 1.8 Tm 9.5 TL /F2 7.7 Tf 0 0 0 rg (Problem statement 11: Telemedicine Slot Booking & Prescription Portal) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 692.5276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 11.3 Tm /F1 7.7 Tf 9.5 TL (The system enables patients to find doctors, book available video-consultation slots, receive a secure consultation-room link and access digitally) Tj T* (signed prescriptions. This submission focuses on reliable booking, secure consultation access and verifiable prescription records.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 686.5276 cm
+Q
+q
+1 0 0 1 45.68504 667.5276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 12 Tf 14 TL (1. Functional requirements) Tj T* ET
+Q
+Q
+q
+1 0 0 1 7.086614 526.1276 cm
+q
+.960784 .960784 .960784 rg
+n 0 135.4 581.1024 -14.2 re f*
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 3 124.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1 Tm /F2 7.2 Tf 8.2 TL (ID) Tj T* ET
+Q
+Q
+q
+1 0 0 1 37.01575 124.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1 Tm /F2 7.2 Tf 8.2 TL (Type) Tj T* ET
+Q
+Q
+q
+1 0 0 1 105.0472 124.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1 Tm /F2 7.2 Tf 8.2 TL (Description) Tj T* ET
+Q
+Q
+q
+1 0 0 1 255.2835 124.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1 Tm /F2 7.2 Tf 8.2 TL (Priority) Tj T* ET
+Q
+Q
+q
+1 0 0 1 294.9685 124.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1 Tm /F2 7.2 Tf 8.2 TL (Acceptance criteria) Tj T* ET
+Q
+Q
+q
+1 0 0 1 476.3858 124.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1 Tm /F2 7.2 Tf 8.2 TL (Rationale) Tj T* ET
+Q
+Q
+q
+1 0 0 1 3 109.6 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (FR-001) Tj T* ET
+Q
+Q
+q
+1 0 0 1 37.01575 109.6 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (Functional) Tj T* ET
+Q
+Q
+q
+1 0 0 1 105.0472 92.4 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 18.6 Tm /F1 7.2 Tf 8.6 TL -0.087626 Tw (The system shall allow patients to view active) Tj T* 0 Tw (doctors and their specialties before selecting) Tj T* (a video consultation.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 255.2835 109.6 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (High) Tj T* ET
+Q
+Q
+q
+1 0 0 1 294.9685 92.4 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 18.6 Tm /F1 7.2 Tf 8.6 TL (Pass: Active doctor profiles display specialty) Tj T* (information before booking. Fail: an inactive or) Tj T* (unavailable doctor can be selected for a new booking.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 476.3858 83.8 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 27.2 Tm /F1 7.2 Tf 8.6 TL (Enables informed doctor) Tj T* (selection and prevents booking) Tj T* (against unavailable physician) Tj T* (profiles.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 3 69.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (FR-002) Tj T* ET
+Q
+Q
+q
+1 0 0 1 37.01575 69.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (Functional) Tj T* ET
+Q
+Q
+q
+1 0 0 1 105.0472 52 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 18.6 Tm /F1 7.2 Tf 8.6 TL -0.078472 Tw (The system shall allow a patient to select and) Tj T* 0 Tw (book an available video-consultation date) Tj T* (and time slot for a selected doctor.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 255.2835 69.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (High) Tj T* ET
+Q
+Q
+q
+1 0 0 1 294.9685 43.4 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 27.2 Tm /F1 7.2 Tf 8.6 TL (Pass: Only currently available slots can be selected) Tj T* (and a successful booking returns a confirmation with) Tj T* (doctor, date and time. Fail: a slot already booked by) Tj T* (another patient is confirmed.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 476.3858 52 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 18.6 Tm /F1 7.2 Tf 8.6 TL (Provides the core scheduling) Tj T* (function and prevents double) Tj T* (booking.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 3 28.8 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (FR-003) Tj T* ET
+Q
+Q
+q
+1 0 0 1 37.01575 28.8 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (Functional) Tj T* ET
+Q
+Q
+q
+1 0 0 1 105.0472 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 27.2 Tm /F1 7.2 Tf 8.6 TL (The system shall generate a secure) Tj T* (consultation-room link only after a booking is) Tj T* (confirmed and make the link available to the) Tj T* (patient for the scheduled consultation.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 255.2835 28.8 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (High) Tj T* ET
+Q
+Q
+q
+1 0 0 1 294.9685 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 27.2 Tm /F1 7.2 Tf 8.6 TL (Pass: A confirmed booking receives a room link and) Tj T* (the link is visible through the authorized patient portal.) Tj T* (Fail: an unconfirmed booking exposes a consultation) Tj T* (link.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 476.3858 11.6 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 18.6 Tm /F1 7.2 Tf 8.6 TL (Connects a valid booking to a) Tj T* (controlled remote-consultation) Tj T* (entry point.) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+0 0 0 RG
+.45 w
+n 0 135.4 m 581.1024 135.4 l S
+n 0 0 m 581.1024 0 l S
+n 0 0 m 0 135.4 l S
+n 581.1024 0 m 581.1024 135.4 l S
+n 0 121.2 m 581.1024 121.2 l S
+n 0 80.8 m 581.1024 80.8 l S
+n 0 40.4 m 581.1024 40.4 l S
+n 34.01575 0 m 34.01575 135.4 l S
+n 102.0472 0 m 102.0472 135.4 l S
+n 252.2835 0 m 252.2835 135.4 l S
+n 291.9685 0 m 291.9685 135.4 l S
+n 473.3858 0 m 473.3858 135.4 l S
+Q
+Q
+Q
+ 
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+51.02362 19.84252 155.9055 14.17323 re
+f*
+0 0 0 rg
+BT
+/F1-0 7 Tf
+8.4 TL
+ET
+BT
+1 0 0 1 51.02362 25.51181 Tm
+(Mahipal Singh \174 PES1UG24AM153 \174 Section C) Tj
+T*
+ET
+Q
+
+
+endstream
+endobj
+6 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+7 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+8 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+9 0 obj
+<<
+/BaseFont /ZapfDingbats
+/Name /F3
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+10 0 obj
+<<
+/BaseFont /Helvetica-Oblique
+/Encoding /WinAnsiEncoding
+/Name /F4
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+11 0 obj
+<<
+/Contents 12 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font <<
+/F1 6 0 R
+/F1-0 13 0 R
+/F2 8 0 R
+/F3 9 0 R
+/F4 10 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Annots [ ]
+/Parent 2 0 R
+>>
+endobj
+12 0 obj
+<<
+/Length 6618
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+BT /F2 8 Tf 9.6 TL ET
+BT 1 0 0 1 51.02362 805.0394 Tm (PES UNIVERSITY | DEPARTMENT OF CSE | SOFTWARE ENGINEERING) Tj T* ET
+0 0 0 RG
+.5 w
+n 51.02362 796.5354 m 544.252 796.5354 l S
+BT /F1 7 Tf 8.4 TL ET
+BT 1 0 0 1 51.02362 25.51181 Tm (Mahipal Singh | PES1UG24AM153 | Section B) Tj T* ET
+BT 1 0 0 1 540.36 25.51181 Tm (2) Tj T* ET
+Q
+q
+1 0 0 1 45.68504 754.5276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 3 Tm /F2 16 Tf 19 TL (Requirements Table \(continued\)) Tj T* ET
+Q
+Q
+q
+1 0 0 1 7.086614 562.1276 cm
+q
+.960784 .960784 .960784 rg
+n 0 184.4 581.1024 -14.2 re f*
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 3 173.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1 Tm /F2 7.2 Tf 8.2 TL (ID) Tj T* ET
+Q
+Q
+q
+1 0 0 1 37.01575 173.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1 Tm /F2 7.2 Tf 8.2 TL (Type) Tj T* ET
+Q
+Q
+q
+1 0 0 1 105.0472 173.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1 Tm /F2 7.2 Tf 8.2 TL (Description) Tj T* ET
+Q
+Q
+q
+1 0 0 1 255.2835 173.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1 Tm /F2 7.2 Tf 8.2 TL (Priority) Tj T* ET
+Q
+Q
+q
+1 0 0 1 294.9685 173.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1 Tm /F2 7.2 Tf 8.2 TL (Acceptance criteria) Tj T* ET
+Q
+Q
+q
+1 0 0 1 476.3858 173.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1 Tm /F2 7.2 Tf 8.2 TL (Rationale) Tj T* ET
+Q
+Q
+q
+1 0 0 1 3 158.6 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (FR-004) Tj T* ET
+Q
+Q
+q
+1 0 0 1 37.01575 158.6 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (Functional) Tj T* ET
+Q
+Q
+q
+1 0 0 1 105.0472 132.8 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 27.2 Tm /F1 7.2 Tf 8.6 TL (The system shall allow an attending) Tj T* (physician to author a structured prescription) Tj T* (and digitally sign it after successful) Tj T* (physician-license validation.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 255.2835 158.6 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (High) Tj T* ET
+Q
+Q
+q
+1 0 0 1 294.9685 132.8 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 27.2 Tm /F1 7.2 Tf 8.6 TL (Pass: License validation succeeds before signing and) Tj T* (the generated prescription PDF contains a valid digital) Tj T* (signature. Fail: a prescription is signed without) Tj T* (successful license validation.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 476.3858 150 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 10 Tm /F1 7.2 Tf 8.6 TL (Makes the prescription) Tj T* (attributable and verifiable.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 3 118.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (FR-005) Tj T* ET
+Q
+Q
+q
+1 0 0 1 37.01575 118.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (Functional) Tj T* ET
+Q
+Q
+q
+1 0 0 1 105.0472 101 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 18.6 Tm /F1 7.2 Tf 8.6 TL (The system shall allow an authorized patient) Tj T* (to download the digitally signed prescription) Tj T* (as a PDF.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 255.2835 118.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (Medium) Tj T* ET
+Q
+Q
+q
+1 0 0 1 294.9685 92.4 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 27.2 Tm /F1 7.2 Tf 8.6 TL (Pass: The patient can download the prescription as a) Tj T* (PDF and the downloaded record retains the physician) Tj T* (signature. Fail: an unsigned record is presented as a) Tj T* (signed prescription.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 476.3858 101 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 18.6 Tm /F1 7.2 Tf 8.6 TL (Provides a portable medical) Tj T* (record while preserving) Tj T* (authenticity.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 3 69.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 10 Tm /F1 7.2 Tf 8.6 TL (NFR-00) Tj T* (1) Tj T* ET
+Q
+Q
+q
+1 0 0 1 37.01575 69.2 cm
+q
+BT 1 0 0 1 0 10 Tm 8.6 TL /F1 7.2 Tf 0 0 0 rg (Performance &) Tj T* (availability) Tj T* ET
+Q
+Q
+q
+1 0 0 1 105.0472 52 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 27.2 Tm /F1 7.2 Tf 8.6 TL (The consultation-booking service shall) Tj T* (respond to a booking request within 2) Tj T* (seconds under the agreed normal load and) Tj T* (maintain at least 99.9% monthly availability.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 255.2835 77.8 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (High) Tj T* ET
+Q
+Q
+q
+1 0 0 1 294.9685 52 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 27.2 Tm /F1 7.2 Tf 8.6 TL (Pass: Load testing meets the 2-second) Tj T* (booking-response target and measured monthly) Tj T* (availability is at least 99.9%. Fail: either target is) Tj T* (missed.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 476.3858 69.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 10 Tm /F1 7.2 Tf 8.6 TL (Keeps appointment booking) Tj T* (responsive and dependable.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 3 28.8 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 10 Tm /F1 7.2 Tf 8.6 TL (NFR-00) Tj T* (2) Tj T* ET
+Q
+Q
+q
+1 0 0 1 37.01575 28.8 cm
+q
+BT 1 0 0 1 0 10 Tm 8.6 TL /F1 7.2 Tf 0 0 0 rg (Security &) Tj T* (auditability) Tj T* ET
+Q
+Q
+q
+1 0 0 1 105.0472 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 35.8 Tm /F1 7.2 Tf 8.6 TL (The system shall encrypt patient and) Tj T* (prescription data in transit and at rest, restrict) Tj T* (access by authenticated identity and record) Tj T* (security-relevant booking and prescription) Tj T* (events in an audit trail.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 255.2835 37.4 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F1 7.2 Tf 8.6 TL (High) Tj T* ET
+Q
+Q
+q
+1 0 0 1 294.9685 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 35.8 Tm /F1 7.2 Tf 8.6 TL (Pass: Test connections use TLS 1.2 or later, stored) Tj T* (sensitive data uses AES-256, unauthorized access is) Tj T* (denied, and tested security events record time, actor) Tj T* (and relevant record identifiers. Fail: encryption, access) Tj T* (control or audit logging is missing.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 476.3858 20.2 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 18.6 Tm /F1 7.2 Tf 8.6 TL (Protects sensitive healthcare) Tj T* (information and supports) Tj T* (investigation of security events.) Tj T* ET
+Q
+Q
+q
+1 J
+1 j
+0 0 0 RG
+.45 w
+n 0 184.4 m 581.1024 184.4 l S
+n 0 0 m 581.1024 0 l S
+n 0 0 m 0 184.4 l S
+n 581.1024 0 m 581.1024 184.4 l S
+n 0 170.2 m 581.1024 170.2 l S
+n 0 129.8 m 581.1024 129.8 l S
+n 0 89.4 m 581.1024 89.4 l S
+n 0 49 m 581.1024 49 l S
+n 34.01575 0 m 34.01575 184.4 l S
+n 102.0472 0 m 102.0472 184.4 l S
+n 252.2835 0 m 252.2835 184.4 l S
+n 291.9685 0 m 291.9685 184.4 l S
+n 473.3858 0 m 473.3858 184.4 l S
+Q
+Q
+Q
+q
+1 0 0 1 45.68504 557.1276 cm
+Q
+q
+1 0 0 1 45.68504 533.9276 cm
+q
+BT 1 0 0 1 0 10 Tm 8.6 TL /F2 7.2 Tf 0 0 0 rg (Test settings:) Tj /F1 7.2 Tf ( The response-time and availability values above are proposed verification targets for this lab submission, not clinical recommendations.) Tj T* (Operational limits and access policies are configurable.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 519.3276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.4 Tm /F2 7.2 Tf 8.6 TL (Requirement IDs refer to this individual submission.) Tj T* ET
+Q
+Q
+ 
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+51.02362 19.84252 155.9055 14.17323 re
+f*
+0 0 0 rg
+BT
+/F1-0 7 Tf
+8.4 TL
+ET
+BT
+1 0 0 1 51.02362 25.51181 Tm
+(Mahipal Singh \174 PES1UG24AM153 \174 Section C) Tj
+T*
+ET
+Q
+
+
+endstream
+endobj
+13 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+14 0 obj
+<<
+/Contents 15 0 R
+/MediaBox [ 0 0 841.8898 595.2756 ]
+/Resources <<
+/Font 16 0 R
+/ProcSet [ /PDF /Text /ImageB /ImageC /ImageI ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Parent 2 0 R
+>>
+endobj
+15 0 obj
+<<
+/Filter [ /ASCII85Decode /FlateDecode ]
+/Length 2715
+>>
+stream
+Gat=-?&or6'n+tH_5EqX:mTu\O,d:"%+q&g8p4#VI8HcF4cNK_[Fta4qVuWV)Y.o*,?YKbfZ)J'jh6G)LR0"&"THL1n'rXmh_3VH?:cIY>C9u0E5NH0fkbZWfbK^FZR`?(5(HMcb31%Uc>XATAW'(PQi#I+]t\pc@J2C)ZhPpF5J*KB^N`knS)#[K&$OX/q$a_-&$Ha5^3H$Mg"ksQGI,u?S%I:%AW-Sm`S])hgFBY>gd^8T,P*X1m=ch?L<WA[[S&D]8lJ<!]a7u5MR3'GhQllOc/2k\T,Mn-/jJ`iO&ZfU/g82ngg(7<,kkL,0(?L7kP!(3RC1dFT2@*-ORHO,oAZ=J3gJR'%de/W?4Q7c-n,L==\r?0it\n(E8cF^g)DXVT'[IH2g3^Y5#JM*Sh"<4T6B")CV$kgc),c&f'TKn,0XYC@,LEr^E?&?*P:2f:TJp@V9A1R[m)E&F`KE=)m5`0bQuIgp?]%BH1%ES9PV\WFIF)Cjc.'=.*o#TOt<XQWAG+eb>`cG5B*YIOl\Q.)HKN5?pr=5+<<V3>">$a=>2?T7:)4'Nc\I\l=QVgU^h%A!+6r&]]VWVfJ0W(%=r<TD"<j[lX5jJ&)8S60):s-5\GN:Hmu5Y8dW\&1Cjb1a]A]gU3Au^T%K'Ie.,_YE');W]noFP^n$ZZ'&>2OD6lB!P=&f+"sdQ^6NL((@j#qCiOC\p;ng4KZ(pmT(S2g^9:;uX#IYin_()17N1(+p%F%s*'g9WrWl^AmoptRsNR^XTRNKs.*\m5-D.G=_/T4&gM=%FQn/#=c43kG"fd_/9)ijg]Jo>8A_"Tm5BJ(MT7N01HK*3NE]Jpn"m2D-C'[_5gO=<'SC!chAhk)#`bO'gZ*`Cg2=&PR2eE_dS!D?B`M3g@hQ/Hobf6Yq>?5RSqb,.F7aU1k4HC614MNj@i.`'4eOV=R^".e"djO55TY;]u2l4)E<6[Xc0]fjo-8RE4B"lIZ'P(n2^_F,\Gok)WR=boMrhl\mj3,fl$%.r\!]5"c6S3JP`m<Y1\VeKldF0s"#>G[:M2u?qo@%(2_=qt8hR(S;FL.\_9=;=/a=!e@[b*GX^.U+P\,uTl!11)>.3@T!C>&p95FXPtE[#/ZeXWi*(TL,ao!Le&RbW>&^qGWc(U/dDkR9AFK<=[d*b1'JA>'7;9Zle&Q24PT+eJ+o<:'_L7)@.$1ZqQu6S&*f^O@+rITmkYf(.':nfI:VV+41c<bN_P7LN1s+jH\:q-ps-<P39`m@[$#8"o:`H,V2G%W2oa"AT^@CAK,3P,E;"^X=Dm",PK!5Yu`hm=!rjE6/.Am(k-.fhq7=6FkH)ZTiV_`3d-S#+`?nMq3M<+`!-[ldfB?pHroNq/RrBT:+VH8$EaTV)D/BaKg'b#_;K&s9(PdC==f+0feR.R.H=%l&c._l[Sc0Id^[#,dI0gmLM]+<5ILIVj_jtf]K'5i^X7q^ONu:j,2hH75i6k/K9S7g`KUsU7RJ1G8itE^=3t1<okq?WZKA)7,tp$)%`MD_b#'pc1_l]jngR<oiuDZ1e[:KC>i0MF<("`62qqrZ4>c<jpUkFA!OkpGU#ZOG+*P7dp9rfV1-e"\Qj]VB+U*%pA\^WI0t!u7of2@cA>0:biu/k7,>):=NQRC)6@`%[<f\.fb.uGQKK`t4D3T=+1p6<$"n:+%"AF5J]`=`&qK[3k+51kD4!XK].MG5j_LH0iCi>8krDAW6]9GTj"iuE;\2+\+*?l:P2%j&<[?[-!8[:TEJ4NYN&nhOU2pPBbaHG_=jqh6JM28.%/!7&_Z$N[D03^,;aXZ$no,MILhmFs7:@Oo])B"P[]=YoNiU^s5^16d.di$-P>,P)M>!YQC#M*f,6fgUpjagIG!bBKaTrgZ!,H;K_g@FkA<%WWWaOJu@KZ&*g>nr/H":3ZfCaDu6[S03d;bl"8H07HQlE6Eq-m%)g42eo&TGoe3hl90s-u/&)#)gk&iPSDOoNSZ=T55B'Dp^]++=(X6&iK@mMJ6&T=0g)%ZI+@U#[%EAZ5(GQU^V#t(#_ou'Shii%Pk3P>21.j4",B3Ha@WTrm&fnGgL?*#$27R:Rbp@(`jQ&4qt#DON7mu,FMB&LcBl8lG.8Pctf:3\V&0C0G.TJ6^M)l).lL-87]ik<Q(4h;?1f.O]4!i1gd\!^62L)Q,Ia:;/o\/*f=OW'<<ri^OEflD7eIQf:D=dlZ8j<3/M_q.\MarARb-YHM_IP?E8)-9(.XZW?/P1rR8sBFkf?UFWGTfB0F:jo[&jUC#d+,^Nb<^OR>q8*=L8O084PY9,J>Zf+T!B.XD!rg&)X%A;r;W?2ZSo5EuhY^SV%a90.4q$MP*q;nq\`dKQ%VQd?u6I2VRRD1Zo1^VcN4>bBc*T9[soG-uU%2a8gr/*>>=:@o)2a3:3tn]tnTa<X0:%U=Zc]OR@:nHB(aE*!ijb]-u>kX&.Ulft!"W@&s>;!7Ud$o&m$<MMUiiqn^X3otYVk0MPFGt#;,Z,FQAS72J/7)YHf@$schbh?c<F:umrY07`8^OA110>Io6Xa;M.>\An-O"mQH48Jl.<Q#[<f":ch^m8X6nSeHg_Nrq6qfi&@C:2fFD"j"h&,V*0ff-.;gLPQgB3penCr(+$-T-7A[=@*3pUS6r>nXbtq`i53aaQsT&R2`:g;@sKT(7`]a'SoF_e0>$r$;nhJE;ml:O`\P4+_.VnQ=s?d!ARAboaBG@Is~>
+endstream
+endobj
+16 0 obj
+<<
+/F1 17 0 R
+/F2 18 0 R
+/F3 19 0 R
+>>
+endobj
+17 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+18 0 obj
+<<
+/BaseFont /Helvetica-Bold
+/Encoding /WinAnsiEncoding
+/Name /F2
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+19 0 obj
+<<
+/BaseFont /Helvetica-Oblique
+/Encoding /WinAnsiEncoding
+/Name /F3
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+20 0 obj
+<<
+/Contents 21 0 R
+/MediaBox [ 0 0 595.2756 841.8898 ]
+/Resources <<
+/Font <<
+/F1 6 0 R
+/F1-0 22 0 R
+/F2 8 0 R
+/F3 9 0 R
+/F4 10 0 R
+>>
+/ProcSet [ /ImageB /ImageC /ImageI /PDF /Text ]
+>>
+/Rotate 0
+/Trans <<
+>>
+/Type /Page
+/Annots [ ]
+/Parent 2 0 R
+>>
+endobj
+21 0 obj
+<<
+/Length 5917
+>>
+stream
+q
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+BT /F2 8 Tf 9.6 TL ET
+BT 1 0 0 1 51.02362 805.0394 Tm (PES UNIVERSITY | DEPARTMENT OF CSE | SOFTWARE ENGINEERING) Tj T* ET
+0 0 0 RG
+.5 w
+n 51.02362 796.5354 m 544.252 796.5354 l S
+BT /F1 7 Tf 8.4 TL ET
+BT 1 0 0 1 51.02362 25.51181 Tm (Mahipal Singh | PES1UG24AM153 | Section B) Tj T* ET
+BT 1 0 0 1 540.36 25.51181 Tm (4) Tj T* ET
+Q
+q
+1 0 0 1 45.68504 754.5276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 3 Tm /F2 16 Tf 19 TL (3. Use-Case Flow Specification) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 737.0276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F2 7.7 Tf 9.5 TL (UC-02: Book Video Consultation Slot) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 721.5276 cm
+q
+BT 1 0 0 1 0 1.8 Tm 9.5 TL /F2 7.7 Tf 0 0 0 rg (Primary actor:) Tj /F1 7.7 Tf ( Patient) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 706.0276 cm
+q
+BT 1 0 0 1 0 1.8 Tm 9.5 TL /F2 7.7 Tf 0 0 0 rg (Other participants:) Tj /F1 7.7 Tf ( Attending Physician / Scheduling Service; Notification Service) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 690.5276 cm
+q
+BT 1 0 0 1 0 1.8 Tm 9.5 TL /F2 7.7 Tf 0 0 0 rg (Trigger:) Tj /F1 7.7 Tf ( A patient chooses a doctor and requests an available video-consultation slot.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 675.0276 cm
+q
+BT 1 0 0 1 0 1.8 Tm 9.5 TL /F2 7.7 Tf 0 0 0 rg (Related requirements:) Tj /F1 7.7 Tf ( FR-001 to FR-005; NFR-001 and NFR-002.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 670.0276 cm
+Q
+q
+1 0 0 1 45.68504 651.0276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 12 Tf 14 TL (Preconditions) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 635.5276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (1. The patient is registered and authenticated.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 620.0276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (2. At least one active physician and one available consultation slot exist.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 604.5276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (3. The scheduling and notification services are available.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 589.0276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (4. The patient has permission to create a consultation booking.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 585.0276 cm
+Q
+q
+1 0 0 1 45.68504 566.0276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 12 Tf 14 TL (Main success scenario) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 550.5276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (1. The patient opens the telemedicine portal and views available doctors and specialties.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 535.0276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (2. The patient selects an active physician and chooses Book Video Consultation Slot.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 519.5276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (3. The system displays currently available dates and times for the selected physician.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 504.0276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (4. The patient selects an available slot and submits the booking request.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 488.5276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (5. The system validates the patient identity, physician availability and selected slot.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 473.0276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (6. The system reserves the slot and creates a confirmed booking.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 457.5276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (7. The system generates a secure consultation-room link for the confirmed booking.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 442.0276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (8. The system sends the booking confirmation and room link through the configured notification channel.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 426.5276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (9. The patient can use the secure link at the scheduled time to conduct the video consultation.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 411.0276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (10. The system records the booking and relevant access events in the audit trail.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 407.0276 cm
+Q
+q
+1 0 0 1 45.68504 388.0276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 12 Tf 14 TL (Alternate flow A1: Selected slot becomes unavailable) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 372.5276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (A1.1 The selected slot is taken by another patient before confirmation.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 357.0276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (A1.2 The system rejects the booking and informs the patient that the slot is no longer available.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 341.5276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (A1.3 The system displays other currently available slots.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 326.0276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (A1.4 The patient selects another slot and resumes at step 4.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 310.5276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 1.8 Tm /F1 7.7 Tf 9.5 TL (A1.5 If no slots remain, the use case ends without a booking.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 306.5276 cm
+Q
+q
+1 0 0 1 45.68504 287.5276 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 12 Tf 14 TL (Postconditions) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 272.0276 cm
+q
+BT 1 0 0 1 0 1.8 Tm 9.5 TL /F2 7.7 Tf 0 0 0 rg (Success:) Tj /F1 7.7 Tf ( A valid consultation booking is stored, the selected slot is reserved, and a secure room link is generated and delivered.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 45.68504 256.5276 cm
+q
+BT 1 0 0 1 0 1.8 Tm 9.5 TL /F2 7.7 Tf 0 0 0 rg (Alternate outcome:) Tj /F1 7.7 Tf ( No booking is created for an unavailable slot; the patient is offered other available slots.) Tj T* ET
+Q
+Q
+ 
+
+Q
+
+q
+0.0 0.0 595.2756 841.8898 re
+W
+n
+1 0 0 1 0 0 cm
+BT
+/F1-0 12 Tf
+14.4 TL
+ET
+1 1 1 rg
+n
+51.02362 19.84252 155.9055 14.17323 re
+f*
+0 0 0 rg
+BT
+/F1-0 7 Tf
+8.4 TL
+ET
+BT
+1 0 0 1 51.02362 25.51181 Tm
+(Mahipal Singh \174 PES1UG24AM153 \174 Section C) Tj
+T*
+ET
+Q
+
+
+endstream
+endobj
+22 0 obj
+<<
+/BaseFont /Helvetica
+/Encoding /WinAnsiEncoding
+/Name /F1
+/Subtype /Type1
+/Type /Font
+>>
+endobj
+xref
+0 23
+0000000000 65535 f 
+0000000015 00000 n 
+0000000054 00000 n 
+0000000134 00000 n 
+0000000183 00000 n 
+0000000447 00000 n 
+0000006429 00000 n 
+0000006536 00000 n 
+0000006643 00000 n 
+0000006755 00000 n 
+0000006838 00000 n 
+0000006954 00000 n 
+0000007221 00000 n 
+0000013892 00000 n 
+0000014000 00000 n 
+0000014202 00000 n 
+0000017010 00000 n 
+0000017065 00000 n 
+0000017173 00000 n 
+0000017286 00000 n 
+0000017402 00000 n 
+0000017669 00000 n 
+0000023639 00000 n 
+trailer
+<<
+/Size 23
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+23747
+%%EOF
+3 1 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+ /AF [24 0 R] /Names << /EmbeddedFiles << /Names [(Content Credentials) 24 0 R] >> >> >>
+endobj
+23 0 obj
+<< /Length 24280 /Type /EmbeddedFile /Subtype /application#2Fc2pa >>
+stream
+  ^ÿjumb   jumdc2pa  Ä  ™ 8õqc2pa   ^≤jumb   Gjumdc2ma  Ä  ™ 8õqurn:c2pa:d39382ee-5c7f-4172-9f26-18303a281599   ¢jumb   )jumdc2as  Ä  ™ 8õqc2pa.assertions   	πjumb   #jumd@À2ªäHùß*÷ÙCic2pa.icon    bfdb image/svg+xml   	wbidb<svg width="716" height="716" viewBox="0 0 716 716" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M508.749 317.399C516.777 287.314 508.991 253.884 485.389 230.282C461.788 206.681 428.36 198.895 398.273 206.923C376.231 184.928 343.39 174.956 311.148 183.596C278.906 192.234 255.45 217.292 247.36 247.361C217.291 255.451 192.233 278.91 183.595 311.149C174.957 343.391 184.927 376.232 206.924 398.274C198.896 428.359 206.683 461.789 230.284 485.391C253.885 508.992 287.313 516.779 317.401 508.75C339.442 530.745 372.286 540.717 404.525 532.079C436.767 523.441 460.223 498.384 468.313 468.315C498.383 460.224 523.44 436.766 532.078 404.526C540.716 372.285 530.747 339.443 508.749 317.402V317.399ZM470.899 244.776C486.892 260.77 493.488 282.601 490.687 303.412L415.577 260.046C412.411 258.218 408.509 258.218 405.345 260.046L317.401 310.82V277.526C317.401 275.191 318.652 273.005 320.676 271.837L387.644 233.174C414.178 218.353 448.346 222.223 470.901 244.776H470.899ZM357.837 311.144L398.275 334.491V381.185L357.837 404.532L317.398 381.185V334.491L357.837 311.144ZM264.776 269.693C265.207 239.305 285.644 211.649 316.453 203.393C338.3 197.54 360.505 202.744 377.127 215.573L302.014 258.937C298.848 260.764 296.898 264.144 296.898 267.798V369.346L268.065 352.699C266.043 351.531 264.776 349.353 264.776 347.017V269.691V269.693ZM203.391 316.454C209.244 294.608 224.854 277.978 244.276 269.999V356.73C244.276 360.384 246.226 363.763 249.392 365.591L337.337 416.365L308.503 433.013C306.481 434.181 303.961 434.188 301.939 433.02L234.971 394.357C208.868 378.789 195.138 347.261 203.391 316.454ZM244.775 470.9C228.781 454.906 222.186 433.075 224.986 412.264L300.096 455.63C303.263 457.457 307.164 457.457 310.328 455.63L398.273 404.856V438.149C398.273 440.485 397.022 442.671 394.997 443.839L328.029 482.502C301.495 497.322 267.327 493.452 244.772 470.9H244.775ZM450.897 445.982C450.466 476.371 430.029 504.027 399.22 512.283C377.373 518.136 355.168 512.932 338.547 500.102L413.659 456.738C416.826 454.911 418.775 451.532 418.775 447.877V346.329L447.609 362.977C449.631 364.145 450.897 366.323 450.897 368.659V445.985V445.982ZM512.282 399.221C506.429 421.068 490.819 437.697 471.397 445.676V358.946C471.397 355.292 469.448 351.912 466.281 350.085L378.336 299.311L407.17 282.663C409.192 281.495 411.712 281.487 413.734 282.655L480.702 321.318C506.805 336.887 520.536 368.415 512.282 399.221Z" fill="black"/>
+</svg>
+  jumb   )jumdcbor  Ä  ™ 8õqc2pa.actions.v2    „cbor¢gactionsÅ§factionlc2pa.createdqdigitalSourceTypexFhttp://cv.iptc.org/newscodes/digitalsourcetype/trainedAlgorithmicMediamsoftwareAgent¢dnameggpt-5-6gversionggpt-5-6dwhenx2026-10-05T12:15:58.672206ZrallActionsIncludedÙ   §jumb   (jumdcbor  Ä  ™ 8õqc2pa.hash.data    tcbor•jexclusionsÅ¢estart_∫flength^ÿdnamenjumbf manifestcalgfsha256dhashX I˘U7~ôW±V7MÎ;Ëïd√aJ∆⁄ËûƒoC⁄◊*cpad@  âjumb   'jumdc2cl  Ä  ™ 8õqc2pa.claim.v2   Zcbor¶jinstanceIDx,xmp:iid:6a23843c-9cd2-40d4-9417-a2371fd2b7b0tclaim_generator_info£dnamegChatGPTdicon¢curlx$self#jumbf=c2pa.assertions/c2pa.icondhashX u>=W1í≥®NÎL˚¡åt∑'w÷–6«e6„ÒkspecVersione2.2.0isignaturexMself#jumbf=/c2pa/urn:c2pa:d39382ee-5c7f-4172-9f26-18303a281599/c2pa.signaturercreated_assertionsÉ¢curlx$self#jumbf=c2pa.assertions/c2pa.icondhashX u>=W1í≥®NÎL˚¡åt∑'w÷–6«e6„Ò¢curlx*self#jumbf=c2pa.assertions/c2pa.actions.v2dhashX lÏÅÛÎvu`ƒ⁄aËØ¯p‘hzl? ¶N¡r∏Ä˛¢curlx)self#jumbf=c2pa.assertions/c2pa.hash.datadhashX 1k„ÓÓ•f;√ŸŸÌ¨∂¯ÔwçËÒ?@B∞Qlhghdc:titleiimage.pdfcalgfsha256  P8jumb   (jumdc2cs  Ä  ™ 8õqc2pa.signature   Pcbor“ÑYË¢8$!ÇYà0ÇÑ0Çl†•¸ÈpåÚÄ1ÓDds0	*ÜHÜ˜ 0J1!0USSL.com C2PA ICA R1 202510U
+SSL Corporation10	UUS0260422155105Z270423155104Z0G10	UUS10U
+OpenAI OpCo, LLC10UOpenAI Media Service0Ç"0	*ÜHÜ˜ Ç 0Ç
+Ç ù∫jLMóÍÅâ∂—æ^XNr°ôﬂiq|Â!#”Å¢5úL£J<Ôn+øÊdÆ◊ÑKi$ZcœÍv
+ê≤e€|<ç·˛¡3wØ'ﬁ; :¥cáòÕMúø¥3D™T07F∏˝öyDsWU£c|›¨X/ÊzÆﬁ•ò√ìNHZ¯‡|§íK’l∫ ¬*»íæu‘îgµW™jöm00,◊Uaåj“S∂ x^ECûNí£ÄÒØ[—≤Î˛ãÔ∫◊7	ï´d-ô…áö¯ø.–ÁcÄñöy†7ì6£5…H…,òcÈDõ5¨πßSlúhs»
+9ÃIÛ £Çg0Çc0Uˇ0 0U#0Ä9=G‹óèØà{MsÕÂÓ§•*0o+c0a09+0Ü-http://crt-c2pa.ssl.com/SSL.com-C2PA-I-R1.cer0$+0Ühttp://ocsp-c2pa.ssl.com0U 00
++ÉË^0)U%"0 ++$
++ÉË^0UÛùM‘Àùr¯F
+vG•hOt0Uˇ¿0	+ÉË^
++ÉË^
+03	+ÉË^&$019bc403-5cd7-7669-afe6-fdb17177d4280	*ÜHÜ˜ Ç Ç8óle°7 Ò˘Ìt∫’¶[5ıglœ+fi@Õı¸“rVﬂ ï(Í¯fﬁBC=¯x†h(â≠µÓ¸ı2“å∏_ÁlÄnÎ[|ó[0Á.B∏∆pö˛˛ 	¨5F’†åIEÄ√∫íU«Zùo“Îÿyõñ:ºDê44}ÙA•3ó/.lQR
+m=I∞À«ÜXÃ‹Óû.È∆9∏3\ ⁄Ó W3T.p(J%)Oí|.“˙›g.zËPx9Q∫É:⁄à~ê#êíıbXöÂ¬®sÜû≈ÿqÈÔ\d{ëÓ7/vòxVdÁoB—}íºÖjomdÖÿˇ"ñÌπÔ≤–\Ñ}h]5[K±≈iHyÊhé†ƒaò:L¯¿$yÂ¶h‡Ô˝÷ê÷.-AduV_ìî∂°úä<∂¿ËmÛ≈CÁv,h§ÚÊÀãàïË{*r$Å=!∆cm/%Ä£ô[™)•˝GÍ·˜kÂ˚[P&m+°Ç]1ı›b®|2‹L«•,r0PÄWìÇ‚ËÆ≥ßØY4ÆrÔ*ùÆx¨‚3ÏSµ…ô“(®*7°N´¸Ã~Xõ'mE·¥*úΩ0W°1. .…‚»T€°íOæ$5ò˛/i‹∏M„ﬁ/Ëlı¡ä‚”˛rw”®+‘WóÆáÿ æì∂âYS0ÇO0Ç7†'+c»ÃM-õÑQrlÙú^2QÆﬁ0	*ÜHÜ˜ 0O1&0$USSL.com C2PA RSA Root CA 202510U
+SSL Corporation10	UUS0251222181730Z301221181730Z0J1!0USSL.com C2PA ICA R1 202510U
+SSL Corporation10	UUS0Ç"0	*ÜHÜ˜ Ç 0Ç
+Ç À:¥Õ∏úÀ)V∏yß¯kˆ˘ÿèr√¶ò≠*A⁄a.GRΩtQæ]ÏzÇ∂¿˚˙Ë'•ãË˛bÛ`Ò_H ssï‰NnÃNz5ﬁX·◊Ç‹“GCwõﬂHàyü£9§YN^‡NGóÚuB◊v=∂§"‹Ì∆o‘rFå÷Q«µ∑zÚì˘#'’ÄPuäp†hÈÁºÑ(|ú*Í)©¿/˛…vFU∞/cÍ}ûÙ∞D§@ﬁ@6\DäTkWHˇªo§’Íé¬◊|ÿºŒiø† MìE;ô.y“œûü)ªFŸxc0ñ3Qú^ìm˙Â4JXx≥)l]|∏uï<ôw!{ÿ¥JÎ⁄Õ«
+÷…¢ﬁÆó≥∂Qñ⁄íõ√≤ªPƒ˛∂§Lï]-íjObÂ‡*˜i†ú’πì ⁄—ª^O∆Ø˘)L–…ÏÎÛ≤qP{v'hë˘Pà∏w5ÿÕ°·◊”)ÁJ∆áTY$¬g≤m	5€∫Œ∏F•‡ã⁄·ßüjŒ`“ƒ˜¡ﬁsyU‡p¥ÔÍÃ«˛vâNf
+ià-Ì√F¢*‰å‘úWF-Xb’ ®˙~¯¬ŸajÀ5]†ì£≤e®/ÌÔòÁ¸~∫HÙ™°q¸ìØÍßNsài’B¿˘ÑíÖOÀT≥=:¯›)ey Cûñ∏áXñ!Ô—ë{ £Ç&0Ç"0Uˇ0ˇ 0Uˇ0)U%"0 ++$
++ÉË^0U9=G‹óèØà{MsÕÂÓ§•*0U 00
++ÉË^0U#0Ä¸*Ju:Ä˙ôcìsWÏæì∞}√{0x+l0j0$+0Ühttp://ocsp-c2pa.ssl.com0B+0Ü6http://crt-c2pa.ssl.com/SSL.com-C2PA-Root-2025-RSA.cer0	*ÜHÜ˜ Ç Œ6˙>Ôñ6-éØUfˇ{+ kVıÀ≠Ω*Å≠•¶–M£>ì‰ìi’‰å®nÊ7T‚%úÏef(<3=¢ö¢ªÕgdJÁæt!°n√´&ƒ;,⁄Uπ˝GN‡çxõ7Éƒt;≈GaÔmAr§€]CS…ñNÂ‡:ﬂ®›.—ØXó÷ÁÙ_r#<kœΩ9´åì®èßvY>·íı˜Ÿ˚Fb´nn‘àF†≥/*j_•N⁄¯‘¸ÃŸ£<©wE
+¡˘òπ9ÀÃ°q¿*Çq”‰ˆ%‚Q!m÷ﬂ‰SçoJ}é^¿∫’wy!ÅzŒÌ˜õé∂≤äBVùèkA*˛kúãÓ£(œ_ÛÈ–d÷Ó¬âKÎíœıØ¬'M∏ë°7%ôÊ˝Ä‹Ùº«7{æ¥-gX/Á√≥ãqÂDz0∂•≤u>[#~;”T¶:π«Ã3’j5zÅv/˛W⁄i¯>?ÔTèã{F√cû˙Ìƒ/pÑ+ˆVÇÙßÀ$◊l^${:Ω©X;i≥úè“ptˇãn&ª√´E«SñúGµ∆F´^ı¸àãh£5Â|jïeµ´Îπˇ∫∏‡õJG≤ŒÏ/â}ÓØúMƒ…Œı2=è˜&4˛"ãzÌ˘^^g_Q[€$V˚—Y°∑ﬁöf	∂—Ü.˙}~ïyõDf|6Öˆı£gsigTst2°itstTokensÅ°cvalYå0Çà	*ÜHÜ˜†Çy0Çu10	`ÜHe 0Åà*ÜHÜ˜	†yw0u
++Éø0010	`ÜHe  ê√ºw∫X_¶„¬˙Ae7ßÄù˙ﬂtpTÁJ(≈û[@	 £Ö
+“„$$e20261005121602.261216Z0Ä	 ö®s)õLû†Çf0Çˆ0Ç^†a€F(2äåçJ∑ø˛`„l?q∑0	*ÜHÜ˜ 0{10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Issuing CA0260408174626Z370709174626Z0u10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Leaf0Ç¢0	*ÜHÜ˜ Çè 0ÇäÇÅ Í ≈≠î˝˝'ü«xßa ˇ)a*˚°àÕ_®¢óùâ/ãë»º∞ñê=UÇ¡ñé6j≠âiËê€,D2É®
+ÕwÂ5ËÓ®d[˛∏‡éùÁ °(√5›ß7È"˜	Móö¥Ñs¿.|©PG(†¥i∞á)zY˛5B˘ŸiRJ 7ÚhÃÒ-∑Çñ KF\=§Ü∏KEf8¢NM' ï∫uÃNájüt√ $_ƒ~\Æ˛ÛïÌ ëﬂ<ıÜõ*^÷–›…˙»M√…ÑZI,‰8s`R∏LÓ∆Û∑∂ÿ›j©Œ ∫]÷ƒ\5dÚ#S?bée]p+‘…k	ÅERËWÌZF]⁄]vú%yhÉQ§òÑuëròUˇÿ„Cb±Ìig'Aº≈èÚj+ÉIË·-4ª9ØgΩ¥ï»≤ΩEgÕràî_UK,≠ØÌ•Ù$Øw>ÉädQèëå9ñK∞=Æ˙ô°>å=æ6°.ıcµ £x0v0Uˇ0 0Uˇ¿0U%ˇ0
++0U§'TÇ¢äÄ{=≈ÜÕ?pŸ¬ÉôQx0U#0ÄÚ∞«T=#CÖ‹ s–rÄ=∏®0	*ÜHÜ˜ ÇÅ  ˚$OA¿¿ºò≤2 ç ôH5OƒFV~ß>?∂•#˘*H>‡QùE@x¡ªÉNìP…õ'ñhﬂMŒÚˆ“y´ÔÍ¡⁄?ıòYÊpÕâÙÓGã™ÀÏˇå~·FÿëÊú∏‰4Fˇa“x¯}89„RÌ_fËs¿ r;‰®´éÜ*£7!˘;ﬂ{\TÿL«j*KœCt`Äs£…—wØá©˝µ±Ñjnøà*Œö°ö´¢ûÇH7≈cQó€R|og…iB’œı˚≠^ãê‚‡y<.Éjû•Ë%AèÖÌ‰¡†:ç˛ùRPÔáﬁ·dÕU˘! ﬂ∂)Ôü'n—∫4F´J"OÁbw›E#›a-¬1)èƒπ~y´¥W‘¡Ïœ·\{eI∞ÎM´§«'@N¶¥µèœ|√¥Cßv”^0cÓ®Æ5(td´Z5„[/:>N
+a÷0MCõˇN.∆!π>:, W0ujédK¢–	—◊†g&Amg¯pv∏%&V˘ë&'√KI0Ç~0Çf†ç ∆≈≈⁄∞ºÒNï•Íº0	*ÜHÜ˜ 0x10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Root CA0 260408174626Z21260409174626Z0{10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Issuing CA0Ç¢0	*ÜHÜ˜ Çè 0ÇäÇÅ âº‘π‚»°æaªﬁ<df~ßæúm”©0&<Ù‡k 9ﬂï4Ì©¢eH€7Ü2ÉéÃ
+J†¿Û4l†¿òÕ+ü•ÙÀ|Ÿ&ﬁ~…M¢Ôc[ëÊˆY®“˙N˘Ÿ8+ZÕ`ZòÅò®◊S∆„÷.H¨CW	ÈîÚG˘lEä`∑˜Æ/^¢5NÖ8Öiü4ù–MÿC=Õ4m¸cì¸”pªJËvËjNfI†Ì¸¯æÔö∑®w¨Ô∑8Ãπ‘*3ƒv÷@wÀ˛«]-@”ﬁã<¿÷@AôÀî?,} kR¸û P∑	GE·#U˙±OoTòïÙ}∫¯h·"z‹äëCã∂.C±b†æ $é.Ôø§—MË∏?1œ&=≈ PÍÚŸ$ dÌ’sû.px™ﬁV<˘‘Ä¢Ë≠Øˆ˚®£\Àh´D€0wÚƒ4tkUm∆á˚Ú2<ûqE˜ÏP˚˛÷1&ª–ƒMa‚B€Ø√+n_+Ê‚∞Ôç\DÕ¿s}è¢ÈΩmÇº%eÑ0iÌ £{0y0Uˇ0ˇ 0Uˇ0U%0
++0UÚ∞«T=#CÖ‹ s–rÄ=∏®0U#0ÄX¬@†<Gv+®Ên®ëñéñ»∑Ÿ‰0	*ÜHÜ˜ Ç íÏ7\ﬁlÎd⁄Æ°	0rÆ‹rı;ºz=÷∆·/ˆÉ3}ËW@NLô™k‘ôŸã€k÷L¯ –Y3”°†8\#àD$˚á·ˆì'º°ÌL_g]ˇ5´1“Ï{‘@C7O¬Ñú∫d»∞¢~ö6¯·–Ç≥PC≤‡UΩÄî»YRNJtﬁ]«EXõ∑˙0™;‹Gº’.,π8c,yZ∑›U≠=BﬂàœÒh˛s ‘Z∑ﬁ$óë¿Ág˛‹¶
+Û•F≥QœçØ_„»∏@∆Ω„˘÷Kq–d]Âd¬K¿^w—=«[ûœ{˝îîÁKQ⁄˚dÙ´5îÒˆæ~+›≤ö=P›P√ñdém´sü(;w–óÌoEO±3._FÎÉ∂©aº◊ÇÆ¯Äo¬„i0Êm|:Dí+ò-Ø‹4¡æ•*HÁá»ﬁ8µ3 „ÑPpÒ≤KﬁçOˆë‹_Ö˙ÒÊ—◊ ßÓ¥üˆ!x)Å„pXwÜ§:KóÉFË⁄¬jv…©À!Eæe±†Ü.ÄºYKMõCm¥◊Ñ‡¸’»aêCéjù√Ò!<Ñ]˛;÷ÿ#9E_q˙2˝†ÄïDµO Â√t˝‚NárÜÙQáΩ‘µ+5lí§;kjù∫˝¿;úv¬’9I⁄„î>Pj◊L‚âaùÔÎœ≈√@npz80ÇÊ0ÇŒ†P;lâå$3,è˜Oé˚}ÇÏ0	*ÜHÜ˜ 0x10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Root CA0 260408174625Z21260409174625Z0x10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Root CA0Ç"0	*ÜHÜ˜ Ç 0Ç
+Ç ˆíÈ“∫≠û·¨u®Vÿ™±≥jí_ñyıí∑-$¯ø¿Ø`æ¡öÕyö‹lö˛6ö¡ò§?‰,ù∫••Ps≥
+¬˘ÛƒI/xΩ“ÏºÁ?Ùõ—Ú†a¢,â% Q˘%ú“∆/ÙâƒA˛&”m5ÕÏª5`@®ÖQæˆÓêòÒ*ÿùzkjŸ.ŸcÛÂ\)≈Ü"¡ähÕÎ8û©Pñ[#C˚8ˇB|;:°Q/%…H‹1ˇPrÓ|°wÕoÅaÛ?ønË“±¶6‰k2˚˛w®^õ\››1êLéeˇÅÀAŒ(1S CŒHn}÷d≥)‰¥.:∑TZrVWÛ®j}ÔÊa›e»H	Iô2t
+¢Ã›ì S¨#ΩÇÖ ±ÔæÌ°w Ó:F3¢ûÏØÈ1f¥fo≤âì†~ï!ŒA¯^éÈÕπ¿’3]x––'1œP0rs⁄j¬¿ìœ≠‹dáˆ˚Nàvı>Ôˇí,ôw.ˆ‹ò∂ù	:˝Ù	«è_ZÈ~H	+µäÉÚ[<,Øë¢ùA∑Rh—ø∞¿⁄O`ΩÓ)™Ìáçq\(åçà£%cEÿ¸{aèlFT;\…∞ÇØÉ»±#?ü[Ó¢◊Tµ*SÆªÖ€¶˙óûÏÑârÛz@…∂ÖXG[Ò$a9¢Lﬁÿ∆®"Úûø[L,À £f0d0Uˇ0ˇ0Uˇ0UX¬@†<Gv+®Ên®ëñéñ»∑Ÿ‰0U#0ÄX¬@†<Gv+®Ên®ëñéñ»∑Ÿ‰0	*ÜHÜ˜ Ç X¯ÅëòÚla˛»Ü÷[Ñ¶÷æ∏¶]]IÀ∏°)Õ-ù∏X˘Ñâ=<¯o’j¥*¢UígÅô^µT˚öFÄ„Q S¿¡àWﬁÔÇU~„Ù}Î&¸Éˇ!®¡¨ﬁ€ì´Õ–0v:ìùŒ™g9.Ätﬂm~v/ÈÍPAã8=lÂ‡>Ó/€dT6^æbE∂—!¥Ä<åÎ⁄ú÷J©’Te[k—X~¿IáÎÎK_í;î◊öÜˆ°YŒG8¨√∞td—¿R;°±{(k·ió¯(;'ˇÆ§û˜eÀ†ÙÍπΩîŒD‚ò±
+HhÓU©!•`è˛ ÷}—{Ü úÛ®x–∆⁄@.»Å\b®*¡˚VÁyéØÏÂ€”p˛FÃc®dÒ<ÈØ•dº^øÖ-∞Œ„π”§◊RªpãÜù˚.ø
+ˆ“U+#B+C\Ï°Ça?œqÌ∞˜óÈ‰À¬<¸¨w∑∂‹ ¡LÈâ≤≤/√~ídúµÑﬁÃñ˝â∞KµC}“È≠Ü˝Ÿ-üΩ Ó¿¥GV#|HëNgâ {b¡…^UÒˆ∆Q#WoÔáæ Fyæî±» (ùïäà&UfRÔŸK∫®ZÈ¬,≠ü√\BÛ°ı'dyqå
+Zû˝π˘Eyp·jµ7ñéX˝EøT%åÉ=Ÿ&3#–Xw¶∏1Çh0Çd0Åì0{10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Issuing CAa€F(2äåçJ∑ø˛`„l?q∑0	`ÜHe †Ç%0	*ÜHÜ˜	1*ÜHÜ˜	0/	*ÜHÜ˜	1" “ñ¬TnkQ•ˆólfC• ºSrèˇ*5ﬂr„ãu‡S~⁄0Å’*ÜHÜ˜	/1Å≈0Å¬0Åø0Åº ΩOπ≤êLÅ6gànÔA·m˛Ÿ"ùø[íJ–¢ƒ`F"z0Åó0§}0{10	UUS10	UCA10USan Francisco10U
+OpenAI OpCo, LLC10
+UTSA10UOpenAI TSA Issuing CAa€F(2äåçJ∑ø˛`„l?q∑0	*ÜHÜ˜ ÇÄDGòîî‡.&S–¢´vtåè«¿¸Kæ2¡n™»qgÂRÊÅU®@∏PT*Z4O@Ê„Ì•£aü≤“.B‘ﬁπ∞cUÏZ≥—íXÎ‚}Ü≈dwlﬂÛ ,œŒRµŒyç60ª2ÁF€‘°¢k´~⁄»‰Á‚”hFÿg)Â‚ç£`éèñ;{~0Ï42:¸&∫d¥UΩZ8d˛-›„6∂+6w¡$¸Y?ô6„˝õ˝Ÿ;ç≠"ÿáª…eh∞ºÊ-:â≥5S¸*˛;™^ﬂ‰ö¢éE/øSí9ç†™[0≠∏4R≠;x¸"+èOñöºdà¯≈;ãOÌjˆáu':·–xRÉØ__B®Ÿ-\ø–´ÓûI˛o[TÒÒåΩ"mﬁ∏f)u·y"òmÛ#ÁsT†…ò~I—Ü€µqË©Œ<≈Ó@ bCó>w?E„ÓÂ6èãoQÙ–µào;2;ò≥sﬁ´WÛË,˙[Í∂÷âåCHÚñàﬂS≈)Ñ}–‚Ñ“Ì•ÇõV*∏VıerVals°hocspValsÅY◊0Ç”
+ †ÇÃ0Ç»	+0Çπ0Çµ0ÅÈ¢=™™xé˙ˆL˙^j—@MÂTÚÆ20261004220717Z0Åò0Åï0I0	+ ﬂÇ7S^Sÿ3±‡=$5ÒuÊ·
+9=G‹óèØà{MsÕÂÓ§•*•¸ÈpåÚÄ1ÓDdsÄ 20261004220717Z†20261011220716Z°"0 0	+020161006220717Z°#0!0	+0¸X~[®-m∆ 	≤0	*ÜHÜ˜ ÇÅ r∂Dë 4∫Ncô]∑5úK{ÌÇÚsÑ<«Õuﬁja$Û?ÄR¥å+z
+çìæ¿EÓaêT∏;"Å≠Öì4^®Û#h∏#ë»«N∆¸;'T/œ9´¶◊û∞Â.d‚DÕ√”mã>cÆä„0:Iæ.Äıb‹¡¨ÙHpõkNZ«ˇâ∞m>mΩì∫ïoÉ ﬁk¿ág5ﬂ'»1Áœpô¶	mv¥˝† /™_≥lﬂ(€emû¿é!ÿy™¯”ÎΩÖÓy2öÅ—VÆ¡=§∏aèÊBDÜE|ï;r≈i™œç€–⁄äè:ŸœBe jÊ¢…∆	5EÂÌ& WÍ'Ì÷@lP4Ü¸(<∑ßv¯¶—ùˇˇÎ)ﬁWVß,hﬂÈM«—Î‡Í]t7äÎ®∆eN¡>ï("	+ä5MÓ¿k:◊∏ ë§SñƒéòKk† 0ù∫ﬁÊ`G€7Î®VL∫vïæ¶∂ı˙ºöU≈fµQ^6ã¿aî÷E“®™t’@+J⁄†ef Tg[O“†Ç10Ç-0Ç)0Ç†ZJ≤?–(∆˛K≥?n=„'∫0	*ÜHÜ˜ 0J1!0USSL.com C2PA ICA R1 202510U
+SSL Corporation10	UUS0260102201415Z270102201414Z0M10	UUS10U
+SSL Corp1+0)U"SSL.com C2PA ICA R1 OCSP Responder0Ç¢0	*ÜHÜ˜ Çè 0ÇäÇÅ ¢PìAÊJKﬁõ¶ït&X<ÏR¸ªî2Õ√∆Pﬂ–Ωú∆npã#ó◊åÓÃ|VÓgæ˘ö¿í∞Î∫•3ˇmiêÉ/à-Ì∞K],õπ∏e$cÓ∞$`ç
+Ë¯y∆”a5[åóXü≥å\ÿ‰∆¶–C≥ß”TŸlà˜ß∏ƒÿn˝1(ﬁ	.ê'ısŸw¶’Pö ŸºÀ2≈Fπ¸¢UMÓ†õ¨hj¡?8*zÿ”]∫¥≥ÎùU)ÓÏ“7üÆ≈6©ú∞∑ﬁD*ãËPß Äy{%œŸ9ÚûEõw∫x	†¶N{@é1˝Í"háÄƒÇ!‰OZÚÛà§Kâ*~L$&©†ö…ù|ÓkbÖ"2Ó÷‹+“ﬂ÷F4v†Ç(xéæ*›‰÷j*w€tz5'¶á¡∏:SÅ™ö÷+ìØ„õ∑e“&0J•æ ÒãZ4¶°“Ör8X9ƒÏ>2Ñﬂ7y÷0”7xÊËÕíÈn+nÏ0Î28.©<“-Â £Åá0ÅÑ0Uˇ0 0U#0Ä9=G‹óèØà{MsÕÂÓ§•*0	+0 0U%0
++	0U=™™xé˙ˆL˙^j—@MÂTÚÆ0UˇÄ0	*ÜHÜ˜ Ç ªs¶UÑ£hPÎÒ†l◊…)Ñù>®/Ì
+ª†Î´À¡∏Ü∑0%HmÛ·Ω°M(“+e`D‹∂ç´U?◊›Ö˛ó[$,Ï≠KKÙª	˙û∞‡∞∞˝éDr¥èj›cËÎ≤÷‘«ÒÁãﬂﬂlƒ	¢˝=sX¡()¢k`i0);U¥å©§ê©p>nrƒv0iÇO%¥OUŒÈHœ_ãÕVkﬂ‹ûÜ65é¡7ïs∏Ì∂®DæˆóﬁIºè°>r'–=!|R\P©«‹©˚˜m∞*&†îﬂdÖåß=ä:1të!·ÏJﬂÖhŒa©§k23”hÊ…ø≥¸ˇïÒ◊¬eJlNG˛®`îwhAŒN(D•∆òá®5Úéf™$Ωj¡Æ kﬁt£w&eß•¬(%˝>©ÂIπˇthrGP˚tö"hÖåøÉ úŸ„m¢<\«N•v“ˇ¬™≈Æ¥¸*Bl'®¥÷9ÀôXÀ√±¸6Ë5‘À^…òòŒËÇãÌXa∫aë—©z…>X‡¸îHLtÊœ‘|≥ÚË#KË0hª'Ïπˆ	∂ÌyìÂ
+Çµ«Á.∆Ökì•AY)î∫X”oñMüQ3ë?¿∏Pœµ∫`àÈ7
+Lñü#x⁄¡ é≈ñ>l˙_ 7Vﬂ	!òíy˜¿ø„Œíß´,W=A‘â‡?cpadY&t                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ˆY 1	‘Y&∆îø‹•¡®z »j˚[\ôı•˚∆´^‹‹˚Ck∞ô° UˇÌ≈oc¨±äﬂ5íí{©NßﬁñÈÚôO≤cÈZáræáä≥®üEÛ˚lˆ5Òw€≠£∆rÇÆ’Òœ¡Å™–_i1’ ±5*µp—…ÜS†(‹\=ûê∞°äß™ÇÙ= äóﬂ3}vP¡ÇóÇA
+Ì*≈◊Ö&¬&ˆvz¡W˚‡EœØ»Ä¨GÇx˚ı˘uZóπ=ˆ(—€ô(¥Qêu±Vväâ‘™ñJÇÙ…q Òk⁄ç7{{Ì
+£O∞7&çH{=·Â∏“ØM–~ ´[ˇ
+endstream
+endobj
+24 0 obj
+<< /AFRelationship /C2PA_Manifest /Desc (Content Credentials) /F (Content Credentials) /EF << /F 23 0 R >> /Subtype (application/c2pa) /Type /Filespec /UF (Content Credentials) >>
+endobj
+xref
+3 1
+0000024286 00001 n 
+23 2
+0000024421 00000 n 
+0000048804 00000 n 
+trailer
+<< /Size 25 /Root 3 1 R /Prev 23747 >>
+startxref
+49000
+%%EOF
