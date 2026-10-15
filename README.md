@@ -24,8 +24,8 @@ Each lab folder contains individual submissions from all team members, following
 
 ## Mini-Project
 
-* **Title:** Remote Lab Reservation System[cite: 3]
-* **Problem Statement:** A booking portal for students to reserve lab equipment timeslots, view calendar availability, and receive automated email reminders. The project combines calendar UI widgets, RESTful endpoints, and a scheduling engine with conflict detection.[cite: 3]
+* **Title:** Remote Lab Reservation System
+* **Problem Statement:** A booking portal for students to reserve lab equipment timeslots, view calendar availability, and receive automated email reminders. The project combines calendar UI widgets, RESTful endpoints, and a scheduling engine with conflict detection.
 * **Tech Stack:** *TBD*
 
 This section will be updated once the mini-project topic and stack are finalized.
