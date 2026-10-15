@@ -19,7 +19,7 @@ SE_Team_11/
 ├── lab_02/          # (added as labs are assigned)
 ├── mini_project/    # Semester mini-project (details TBD)
 └── README.md
-
+```
 Mini-Project
 Title: TBD
 
