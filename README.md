@@ -32,7 +32,7 @@ This section will be updated once the mini-project topic and stack are finalized
 
 ---
 
-## Contribution Guidelines
+## Contribution GuidelinesS
 
 * `git pull origin main` before you start any work, to avoid overwriting a teammate's push.
 * Commit with clear messages (e.g. `"Add lab_01 flow spec"`, `"Add mini-project ER diagram"`).
