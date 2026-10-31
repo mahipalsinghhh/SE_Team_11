@@ -1,0 +1,46 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.18, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/claude/rlrs
+plugins: platformdirs-4.13.3, anyio-4.15.1
+collecting ... collected 37 items
+
+tests/unit/test_attendance_audit.py::test_mark_completed_and_no_show_after_end PASSED [  2%]
+tests/unit/test_attendance_audit.py::test_cannot_mark_before_slot_ends PASSED [  5%]
+tests/unit/test_attendance_audit.py::test_only_confirmed_and_valid_outcomes PASSED [  8%]
+tests/unit/test_attendance_audit.py::test_audit_records_actor_action_time_and_redacts_secrets PASSED [ 10%]
+tests/unit/test_conflict.py::test_before_and_after_do_not_conflict PASSED [ 13%]
+tests/unit/test_conflict.py::test_touching_back_to_back_is_accepted PASSED [ 16%]
+tests/unit/test_conflict.py::test_partial_overlap_rejected_with_range PASSED [ 18%]
+tests/unit/test_conflict.py::test_containing_and_contained_rejected PASSED [ 21%]
+tests/unit/test_conflict.py::test_identical_slot_rejected PASSED         [ 24%]
+tests/unit/test_conflict.py::test_other_equipment_unaffected PASSED      [ 27%]
+tests/unit/test_conflict.py::test_cancelled_slot_can_be_rebooked PASSED  [ 29%]
+tests/unit/test_conflict.py::test_pending_blocks_slot PASSED             [ 32%]
+tests/unit/test_conflict.py::test_maintenance_block_conflicts PASSED     [ 35%]
+tests/unit/test_maintenance.py::test_overlapping_active_reservations_are_cancelled PASSED [ 37%]
+tests/unit/test_maintenance.py::test_affected_does_not_mutate PASSED     [ 40%]
+tests/unit/test_reminders.py::test_reminder_scheduled_two_hours_before PASSED [ 43%]
+tests/unit/test_reminders.py::test_no_reminder_if_already_started PASSED [ 45%]
+tests/unit/test_reminders.py::test_booking_inside_lead_window_sends_immediately PASSED [ 48%]
+tests/unit/test_reminders.py::test_not_sent_before_due_time PASSED       [ 51%]
+tests/unit/test_reminders.py::test_sent_exactly_once_even_if_worker_runs_twice PASSED [ 54%]
+tests/unit/test_reminders.py::test_no_reminder_for_cancelled_or_rejected PASSED [ 56%]
+tests/unit/test_reminders.py::test_cancel_jobs_for_reservation PASSED    [ 59%]
+tests/unit/test_reminders.py::test_temporary_failure_is_retried_then_succeeds PASSED [ 62%]
+tests/unit/test_reminders.py::test_repeated_failure_marks_failed PASSED  [ 64%]
+tests/unit/test_report.py::test_known_dataset_reconciles PASSED          [ 67%]
+tests/unit/test_report.py::test_booking_outside_window_ignored_and_partial_clipped PASSED [ 70%]
+tests/unit/test_report.py::test_zero_available_hours_gives_zero_pct PASSED [ 72%]
+tests/unit/test_rules.py::test_valid_booking_has_no_violations PASSED    [ 75%]
+tests/unit/test_rules.py::test_past_start PASSED                         [ 78%]
+tests/unit/test_rules.py::test_outside_hours_boundaries PASSED           [ 81%]
+tests/unit/test_rules.py::test_multi_day_booking_rejected PASSED         [ 83%]
+tests/unit/test_rules.py::test_off_grid PASSED                           [ 86%]
+tests/unit/test_rules.py::test_advance_window_edge PASSED                [ 89%]
+tests/unit/test_rules.py::test_max_duration_edge PASSED                  [ 91%]
+tests/unit/test_rules.py::test_max_active_per_user PASSED                [ 94%]
+tests/unit/test_rules.py::test_user_cannot_double_book_same_time_on_other_equipment PASSED [ 97%]
+tests/unit/test_rules.py::test_all_violations_reported_together PASSED   [100%]
+
+============================== 37 passed in 0.07s ==============================

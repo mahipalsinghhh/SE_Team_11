@@ -1,0 +1,29 @@
+@startuml
+title RLRS - Class Diagram (domain + engine)
+enum Status { Pending Confirmed Cancelled Rejected Completed NoShow }
+enum JobStatus { Pending Sent Failed Cancelled }
+class User { +id +name +email +role : Student|LabInCharge|Admin +password_hash }
+class Lab { +id +name +open_time +close_time +slot_minutes +max_duration +advance_days +max_active_per_user }
+class Equipment { +id +name +type +active : bool +requires_approval : bool +remote_access_info }
+class Reservation { +id +status : Status +interval : Interval +created_at }
+class MaintenanceBlock { +id +interval : Interval +reason }
+class ReminderJob { +send_at +status : JobStatus +attempts +next_attempt_at }
+class AuditEvent { +actor +action +at +details }
+class Interval << (V,#eee) >> { +start +end +overlaps(other) +minutes }
+class SchedulingEngine { +find_conflicts(eq, interval, reservations, blocks) +validate_booking(...) : Violation[] }
+class ReminderWorker { +process_due(jobs, reservations, now, send) }
+class ReportService { +utilisation_report(reservations, hours, window) }
+Lab "1" o-- "*" Equipment
+User "1" -- "*" Reservation : books
+Equipment "1" -- "*" Reservation
+Equipment "1" -- "*" MaintenanceBlock
+Reservation "1" -- "0..1" ReminderJob
+Reservation --> Status
+ReminderJob --> JobStatus
+Reservation *-- Interval
+SchedulingEngine ..> Reservation
+SchedulingEngine ..> MaintenanceBlock
+ReminderWorker ..> ReminderJob
+ReportService ..> Reservation
+User "1" -- "*" AuditEvent : actor
+@enduml

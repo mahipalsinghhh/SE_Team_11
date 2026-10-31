@@ -1,0 +1,34 @@
+@startuml
+title RLRS - Activity: Booking decision
+start
+:Student selects equipment and slot;
+if (Signed in?) then (no)
+  :Redirect to sign-in;
+  stop
+endif
+if (Equipment active?) then (no)
+  :Reject: equipment unavailable;
+  stop
+endif
+if (Booking rules satisfied?) then (no)
+  :400 with violated rules;
+  stop
+endif
+if (Overlaps reservation or maintenance?) then (yes)
+  :409 with conflicting range;
+  stop
+endif
+if (Requires approval?) then (yes)
+  :Save as Pending; notify in-charge;
+  if (Approved?) then (yes)
+    :Status Confirmed;
+  else (no)
+    :Status Rejected, slot freed, email user;
+    stop
+  endif
+else (no)
+  :Save as Confirmed;
+endif
+:Send confirmation email; schedule reminder;
+stop
+@enduml
