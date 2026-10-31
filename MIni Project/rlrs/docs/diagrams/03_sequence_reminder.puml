@@ -1,0 +1,26 @@
+@startuml
+title RLRS - Sequence: Reminder worker (RLRS-10)
+participant "Scheduler (every minute)" as S
+participant "ReminderWorker" as W
+database "SQLite" as DB
+participant "SMTP" as M
+S -> W : tick(now)
+W -> DB : SELECT Pending jobs due <= now
+loop each job
+  W -> DB : load reservation
+  alt cancelled / rejected / started
+    W -> DB : job = Cancelled
+  else active
+    W -> M : send reminder
+    alt success
+      W -> DB : job = Sent
+    else failure
+      alt attempts >= 3
+        W -> DB : job = Failed
+      else
+        W -> DB : next_attempt_at = now + backoff
+      end
+    end
+  end
+end
+@enduml

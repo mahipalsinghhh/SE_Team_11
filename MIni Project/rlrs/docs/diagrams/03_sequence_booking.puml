@@ -1,0 +1,30 @@
+@startuml
+title RLRS - Sequence: Reserve a timeslot (RLRS-6)
+actor Student
+participant "Calendar UI" as UI
+participant "REST API" as API
+participant "Scheduling Engine" as Eng
+database "SQLite" as DB
+Student -> UI : select free slot, submit
+UI -> API : POST /api/reservations
+API -> API : authenticate, check role
+API -> DB : BEGIN IMMEDIATE (lock)
+API -> Eng : validate_booking(user, interval, now, cfg)
+Eng --> API : violations
+alt violations not empty
+  API -> DB : ROLLBACK
+  API --> UI : 400 + rule messages
+else no violations
+  API -> Eng : find_conflicts(equipment, interval)
+  Eng --> API : conflicts
+  alt conflict
+    API -> DB : ROLLBACK
+    API --> UI : 409 + conflicting range
+  else free
+    API -> DB : INSERT reservation (Confirmed/Pending)
+    API -> DB : INSERT email job + reminder job + audit event
+    API -> DB : COMMIT
+    API --> UI : 201 reservation
+  end
+end
+@enduml

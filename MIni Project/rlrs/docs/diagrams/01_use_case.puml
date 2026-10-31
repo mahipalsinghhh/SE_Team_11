@@ -1,0 +1,42 @@
+@startuml
+title RLRS - Use Case Diagram
+left to right direction
+actor Student
+actor "Lab In-charge" as Lab
+actor Administrator as Admin
+actor "Email Service (SMTP)" as Mail <<system>>
+Lab -|> Student
+Admin -|> Lab
+rectangle "Remote Lab Reservation System" {
+  usecase "Sign in / out" as UC1
+  usecase "Browse equipment" as UC2
+  usecase "View availability calendar" as UC3
+  usecase "Reserve timeslot" as UC4
+  usecase "Cancel reservation" as UC5
+  usecase "View my reservations" as UC6
+  usecase "Receive confirmation & reminder" as UC7
+  usecase "Manage labs & equipment" as UC8
+  usecase "Approve / reject booking" as UC9
+  usecase "Block equipment for maintenance" as UC10
+  usecase "Mark attendance" as UC11
+  usecase "View utilisation report" as UC12
+  usecase "Detect scheduling conflict" as UC13
+  usecase "Validate booking rules" as UC14
+}
+Student --> UC1
+Student --> UC2
+Student --> UC3
+Student --> UC4
+Student --> UC5
+Student --> UC6
+Student --> UC7
+Lab --> UC8
+Lab --> UC9
+Lab --> UC10
+Lab --> UC11
+Lab --> UC12
+UC4 ..> UC13 : <<include>>
+UC4 ..> UC14 : <<include>>
+UC10 ..> UC5 : <<extend>> cancels affected
+UC7 --> Mail
+@enduml
