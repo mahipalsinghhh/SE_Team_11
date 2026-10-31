@@ -1,47 +1,46 @@
 # SE_Team_11
 
-Team repository for Software Engineering coursework — Dept. of CSE(AIML), PES University. Used for lab submissions and the semester mini-project.
+Team repository for Software Engineering coursework: Dept. of CSE(AIML), PES University. Used for lab submissions and the semester mini-project.
 
 ## Team
 
-| Name | SRN |
-| :--- | :--- |
-| Mahipal Singh | PES1UG24AM153 |
-| Deepesh M | PES1UG24AM150 |
-| Venkat Kushal | PES1UG24AM124 |
-| Lakshya Budhauliya | PES1UG24AM147 |
+| Name               | SRN           | Role        |
+|:-------------------|:--------------|:------------|
+| Mahipal Singh      | PES1UG24AM153 | Team leader |
+| Deepesh M          | PES1UG24AM150 |             |
+| Venkat Kushal      | PES1UG24AM124 |             |
+| Lakshya Budhauliya | PES1UG24AM147 |             |
 
 ## Repository Structure
 
-```text
+```
 SE_Team_11/
-├── lab_01/          # Requirements Engineering & UML Use-Case Modelling
-├── lab_02/          # (added as labs are assigned)
-├── mini_project/    # Semester mini-project (details TBD)
+├── Lab 1/ Lab 2/ Lab 3/ Lab-4/     # individual lab submissions
+├── MIni Project/
+│   ├── HANDOFF.md                  # current project state, owners, next steps: read first
+│   ├── Document/                   # SRS, SAD, Test Plan
+│   └── rlrs/                       # code, tests, UML (rlrs/docs/diagrams)
 └── README.md
 ```
-Each lab folder contains individual submissions from all team members, following the naming convention agreed for that lab (e.g. sr_name.pdf).
 
-## Mini-Project
+## Mini-Project: Remote Lab Reservation System (RLRS)
 
-* **Title:** Remote Lab Reservation System
-* **Problem Statement:** A booking portal for students to reserve lab equipment timeslots, view calendar availability, and receive automated email reminders. The project combines calendar UI widgets, RESTful endpoints, and a scheduling engine with conflict detection.
-* **Tech Stack:** *TBD*
+- **Problem statement:** A booking portal for students to reserve lab equipment timeslots, view calendar availability, and receive automated email reminders. It combines calendar UI widgets, RESTful endpoints, and a scheduling engine with conflict detection.
+- **Planned stack:** FastAPI, SQLAlchemy, SQLite, APScheduler, FullCalendar (HTML/JS), pytest, GitHub Actions.
+- **Status:** the framework-independent logic (conflict detection, booking rules, reminders, maintenance, attendance/audit, report) is implemented with 37 passing unit tests. The API, database and UI are not built yet. See `MIni Project/HANDOFF.md`.
+- **Jira:** project key `RLRS` (Scrum board). Sprint 1: 27-31 Oct. Sprint 2: 2-7 Nov. Presentation: 9 Nov 2026.
 
-This section will be updated once the mini-project topic and stack are finalized.
-
----
+Run the tests: `cd "MIni Project/rlrs"`, create a virtual environment, `pip install -r requirements.txt`, `python -m pytest -v`.
 
 ## Contribution Guidelines
 
-* `git pull origin main` before you start any work, to avoid overwriting a teammate's push.
-* Commit with clear messages (e.g. `"Add lab_01 flow spec"`, `"Add mini-project ER diagram"`).
-* Keep each person's files clearly named/scoped within shared folders so contributions don't collide.
-* Push directly to `main` for now (branch/PR workflow can be added later if the team wants stricter review for the mini-project).
-
----
+- Do not commit feature work directly to `main`. Branch from the latest `main`: `git switch main && git pull origin main && git switch -c feature/RLRS-<n>-short-name`.
+- Put the Jira key in branch names and commits, e.g. `feat(RLRS-6): add reservation endpoint`.
+- Open a Pull Request into `main` and get one teammate's review before merging.
+- Add or update tests when behaviour changes. Never commit secrets or real student contact details.
+- Mark a Jira story Done only after its acceptance criteria have been verified.
 
 ## Course Info
 
-* **Course:** Software Engineering
-* **Department:** CSE(AIML), PES University
+- **Course:** Software Engineering
+- **Department:** CSE(AIML), PES University
