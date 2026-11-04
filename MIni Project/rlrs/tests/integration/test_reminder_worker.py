@@ -1,7 +1,11 @@
 """RLRS-10 integration tests: real SQLite, fake clock (no waiting), fake mailer.
 
-Test Plan cases: TC-MAIL-01 (sent before slot), TC-MAIL-02 (no reminder for cancelled/rejected),
-TC-MAIL-03 (retry then Failed), TC-RESTART-01 (exactly once across reruns/restart).
+Test Plan v1.0 IDs (section 13):
+  TC-MAIL-01  SMTP unavailable -> retried, Failed after max attempts
+  TC-MAIL-02  advance fake clock to reminder time, run worker twice -> exactly one reminder
+  TC-MAIL-03  cancel reservation, advance clock past reminder time -> no reminder
+  TC-RESTART-01  restart with reminders queued -> each sent once
+Tests without a TC prefix cover extra RLRS-10 behaviour (timing edges, idempotency, permissions).
 """
 from datetime import timedelta
 
@@ -27,7 +31,7 @@ def run(app, mailer, now, **kw):
     return run_reminders(app.state.session_factory, now, mailer.send, **kw)
 
 
-def test_mail_01_reminder_sent_two_hours_before(app, session, seed, mailer):
+def test_tc_mail_02_reminder_due_two_hours_before_and_sent_exactly_once(app, session, seed, mailer):
     r, job = book(session, seed, NOW + 5 * H, NOW + 6 * H)
     assert job.send_at == NOW + 3 * H
 
@@ -42,6 +46,10 @@ def test_mail_01_reminder_sent_two_hours_before(app, session, seed, mailer):
     assert "14:30-15:30 (Asia/Kolkata)" in body
     session.expire_all()
     assert session.get(ReminderJob, job.id).status == "Sent"
+
+    # worker runs a second time: nothing more is sent
+    assert run(app, mailer, NOW + 3 * H + timedelta(minutes=1))["sent"] == 0
+    assert len(mailer.sent) == 1
 
 
 def test_booking_inside_lead_window_reminds_at_next_run(app, session, seed, mailer):
@@ -63,7 +71,7 @@ def test_schedule_is_idempotent(session, seed):
     assert session.query(ReminderJob).count() == 1
 
 
-def test_mail_02_no_reminder_for_cancelled_or_rejected(app, session, seed, mailer):
+def test_tc_mail_03_no_reminder_for_cancelled_or_rejected(app, session, seed, mailer):
     r1, j1 = book(session, seed, NOW + 5 * H, NOW + 6 * H)
     r2, j2 = book(session, seed, NOW + 7 * H, NOW + 8 * H, user="student2")
     # status changes after the job was planned, without cancelling the job first
@@ -76,7 +84,7 @@ def test_mail_02_no_reminder_for_cancelled_or_rejected(app, session, seed, maile
     assert mailer.sent == []
 
 
-def test_cancel_reminders_marks_pending_jobs(app, session, seed, mailer):
+def test_tc_mail_03_cancelling_marks_pending_reminder_cancelled(app, session, seed, mailer):
     r, job = book(session, seed, NOW + 5 * H, NOW + 6 * H)
     assert cancel_reminders(session, [r.id]) == 1
     session.commit()
@@ -85,7 +93,7 @@ def test_cancel_reminders_marks_pending_jobs(app, session, seed, mailer):
     assert session.get(ReminderJob, job.id).status == "Cancelled"
 
 
-def test_mail_03_temporary_failure_retried_then_sent(app, session, seed):
+def test_tc_mail_01_temporary_smtp_failure_retried_then_sent(app, session, seed):
     _, job = book(session, seed, NOW + 5 * H, NOW + 6 * H)
     flaky = FakeMailer(fail_times=1)
     t = NOW + 3 * H
@@ -99,7 +107,7 @@ def test_mail_03_temporary_failure_retried_then_sent(app, session, seed):
     assert len(flaky.sent) == 1
 
 
-def test_mail_03_repeated_failure_marks_failed(app, session, seed):
+def test_tc_mail_01_repeated_smtp_failure_marks_failed(app, session, seed):
     _, job = book(session, seed, NOW + 5 * H, NOW + 6 * H)
     down = FakeMailer(fail_times=99)
     t = NOW + 3 * H
@@ -112,7 +120,7 @@ def test_mail_03_repeated_failure_marks_failed(app, session, seed):
     assert j.status == "Failed" and j.attempts == 3
 
 
-def test_restart_01_exactly_once_across_reruns_and_restart(tmp_path, mailer):
+def test_tc_restart_01_exactly_once_across_reruns_and_restart(tmp_path, mailer):
     """Run the worker twice, then build a brand-new app on the same database file
     (a restart) and run again: the reminder goes out exactly once."""
     from datetime import time

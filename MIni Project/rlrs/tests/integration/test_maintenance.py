@@ -28,7 +28,7 @@ def post_block(client, seed, start, end, eq="eq1", who="incharge", reason="Calib
         "reason": reason})
 
 
-def test_maint_01_block_cancels_overlapping_and_notifies(client, app, session, seed, mailer):
+def test_tc_maint_01_block_cancels_overlapping_and_notifies(client, app, session, seed, mailer):
     inside = booked(session, seed, T0 + H, T0 + 2 * H)
     partly = booked(session, seed, T0 + 3 * H + timedelta(minutes=30), T0 + 4 * H + timedelta(minutes=30), user="student2")
     before = booked(session, seed, T0, T0 + H)               # ends exactly when block starts
@@ -64,7 +64,7 @@ def test_maint_01_block_cancels_overlapping_and_notifies(client, app, session, s
                        "reservation.cancelled_by_maintenance"]
 
 
-def test_maint_01_new_booking_inside_block_is_rejected(client, session, seed):
+def test_tc_maint_01_new_booking_inside_block_is_rejected(client, session, seed):
     post_block(client, seed, T0 + H, T0 + 3 * H)
     clash = maintenance.slot_conflicts(session, seed["eq1"].id, T0 + 2 * H, T0 + 2 * H + timedelta(minutes=30))
     assert [c.kind for c in clash] == ["maintenance"]
@@ -72,7 +72,7 @@ def test_maint_01_new_booking_inside_block_is_rejected(client, session, seed):
     assert maintenance.slot_conflicts(session, seed["eq2"].id, T0 + 2 * H, T0 + 3 * H) == []  # other equipment
 
 
-def test_maint_01_shows_as_maintenance_on_the_calendar_feed(client, session, seed):
+def test_tc_maint_01_shows_as_maintenance_on_the_calendar_feed(client, session, seed):
     r = booked(session, seed, T0 + 5 * H, T0 + 6 * H)
     post_block(client, seed, T0 + H, T0 + 2 * H)
     feed = client.get(f"/api/equipment/{seed['eq1'].id}/schedule",

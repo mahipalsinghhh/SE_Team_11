@@ -13,7 +13,7 @@ def finished(session, seed, status="Confirmed"):
     return make_reservation(session, seed["student"], seed["eq1"], NOW - 2 * H, NOW - H, status)
 
 
-def test_att_01_mark_completed_and_no_show(client, session, seed):
+def test_tc_att_01_mark_completed_and_no_show(client, session, seed):
     r1 = finished(session, seed)
     r2 = make_reservation(session, seed["student2"], seed["eq2"], NOW - 2 * H, NOW - H)
     a = client.post(f"/api/reservations/{r1.id}/attendance", json={"outcome": "Completed"},
@@ -26,7 +26,7 @@ def test_att_01_mark_completed_and_no_show(client, session, seed):
     assert session.get(Reservation, r1.id).status == "Completed"
 
 
-def test_att_01_marking_before_slot_ends_is_409(client, session, seed):
+def test_tc_att_01_marking_before_slot_ends_is_409(client, session, seed):
     r = make_reservation(session, seed["student"], seed["eq1"], NOW - H, NOW + H)  # in progress
     resp = client.post(f"/api/reservations/{r.id}/attendance", json={"outcome": "Completed"},
                        headers=as_user(seed["incharge"]))
@@ -57,7 +57,7 @@ def test_bad_outcome_404_and_permissions(client, session, seed):
     assert client.post(f"/api/reservations/{r.id}/attendance", json={"outcome": "NoShow"}).status_code == 401
 
 
-def test_audit_01_records_actor_action_and_time(client, session, seed, clock):
+def test_tc_audit_01_records_actor_action_and_time(client, session, seed, clock):
     r = finished(session, seed)
     client.post(f"/api/reservations/{r.id}/attendance", json={"outcome": "NoShow"},
                 headers=as_user(seed["incharge"]))
@@ -71,7 +71,7 @@ def test_audit_01_records_actor_action_and_time(client, session, seed, clock):
     assert ev["details"] == {"from_status": "Confirmed", "to_status": "NoShow"}
 
 
-def test_audit_01_never_stores_secrets(session, seed):
+def test_tc_audit_01_never_stores_secrets(session, seed):
     record_audit(session, seed["admin"], "user.password_changed", "user", seed["student"].id, NOW,
                  password="hunter2", new_password="x", api_key="k", note="ok")
     session.commit()
@@ -83,3 +83,14 @@ def test_audit_01_never_stores_secrets(session, seed):
 
 def test_students_cannot_read_audit_log(client, seed):
     assert client.get("/api/audit", headers=as_user(seed["student"])).status_code == 403
+
+
+def test_tc_att_01_no_show_is_counted_in_the_report(client, session, seed):
+    """TC-ATT-01 expected result: 'Status No-show; counted in no-show report.'"""
+    r = finished(session, seed)
+    h = as_user(seed["incharge"])
+    assert client.post(f"/api/reservations/{r.id}/attendance", json={"outcome": "NoShow"}, headers=h).status_code == 200
+    rep = client.get("/api/reports/utilisation", headers=h, params={
+        "from": (NOW - 24 * H).isoformat() + "Z", "to": (NOW + H).isoformat() + "Z"}).json()
+    row = next(x for x in rep["rows"] if x["equipment_id"] == seed["eq1"].id)
+    assert (row["no_shows"], row["bookings"], row["booked_hours"]) == (1, 1, 1.0)

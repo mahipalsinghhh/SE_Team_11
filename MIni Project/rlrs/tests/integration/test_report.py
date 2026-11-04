@@ -46,7 +46,7 @@ def load_dataset(session, seed):
     make_reservation(session, s, e1, ist(4, 9), ist(4, 10), "Confirmed")
 
 
-def test_rep_01_known_dataset_reconciles(client, session, seed):
+def test_tc_rep_01_known_dataset_reconciles(client, session, seed):
     load_dataset(session, seed)
     r = client.get("/api/reports/utilisation", params=WINDOW, headers=as_user(seed["incharge"]))
     assert r.status_code == 200
