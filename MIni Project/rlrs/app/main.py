@@ -12,6 +12,8 @@ from app.api import api_router
 from app.config import Settings
 from app.db import make_engine, make_session_factory
 from app.models import Base
+from app.worker.mailer import mailer_from_settings
+from app.worker.runner import start_scheduler
 
 UI_DIR = Path(__file__).parent / "ui"
 
@@ -21,9 +23,15 @@ def create_app(settings: Settings | None = None, mailer=None, start_worker: bool
     engine = make_engine(settings.database_url)
     Base.metadata.create_all(engine)
 
+    mailer = mailer or mailer_from_settings(settings)
+    run_worker = settings.worker_enabled if start_worker is None else start_worker
+
     @asynccontextmanager
     async def lifespan(app: FastAPI):
+        sched = start_scheduler(app.state.session_factory, mailer, settings) if run_worker else None
         yield
+        if sched:
+            sched.shutdown(wait=False)
         engine.dispose()
 
     app = FastAPI(title="Remote Lab Reservation System", version="0.1.0", lifespan=lifespan)

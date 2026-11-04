@@ -1,8 +1,11 @@
 """Database engine and sessions.
 
-SQLite note: every transaction starts with BEGIN IMMEDIATE, which takes the write lock up
-front. That makes check-then-insert (booking conflict check, reminder claiming) safe against
-concurrent requests and a second worker, as decided in HANDOFF section 3.
+SQLite notes:
+* WAL journal mode, so readers never block the writer (and the worker never blocks the API).
+* Sessions from make_session_factory(engine) start every transaction with BEGIN IMMEDIATE,
+  taking the write lock up front. That makes check-then-insert (booking conflict check,
+  maintenance cancellation, reminder claiming) safe against concurrent requests and a second
+  worker, as decided in HANDOFF section 3. Pass immediate=False for read-only sessions.
 """
 from __future__ import annotations
 
@@ -23,17 +26,21 @@ def make_engine(url: str) -> Engine:
         dbapi_conn.isolation_level = None  # let us issue BEGIN ourselves
         cur = dbapi_conn.cursor()
         cur.execute("PRAGMA foreign_keys=ON")
+        if ":memory:" not in url and url not in ("sqlite://", "sqlite:///"):
+            cur.execute("PRAGMA journal_mode=WAL")
         cur.close()
 
     @event.listens_for(engine, "begin")
     def _on_begin(conn):
-        conn.exec_driver_sql("BEGIN IMMEDIATE")
+        mode = conn.get_execution_options().get("rlrs_begin", "IMMEDIATE")
+        conn.exec_driver_sql("BEGIN IMMEDIATE" if mode == "IMMEDIATE" else "BEGIN")
 
     return engine
 
 
-def make_session_factory(engine: Engine) -> sessionmaker[Session]:
-    return sessionmaker(bind=engine, expire_on_commit=False, future=True)
+def make_session_factory(engine: Engine, immediate: bool = True) -> sessionmaker[Session]:
+    bind = engine.execution_options(rlrs_begin="IMMEDIATE" if immediate else "DEFERRED")
+    return sessionmaker(bind=bind, expire_on_commit=False, future=True)
 
 
 def utcnow() -> datetime:

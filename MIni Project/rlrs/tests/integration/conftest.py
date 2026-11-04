@@ -8,6 +8,7 @@ from fastapi.testclient import TestClient
 
 from app.api.deps import get_now
 from app.config import Settings
+from app.db import make_session_factory
 from app.main import create_app
 from app.models import Equipment, Lab, Reservation, Role, User
 
@@ -63,7 +64,9 @@ def client(app):
 
 @pytest.fixture
 def session(app):
-    s = app.state.session_factory()
+    # Deferred transactions: the test's own session must not hold the write lock while it
+    # inspects results, or it would block the app/worker it is testing.
+    s = make_session_factory(app.state.engine, immediate=False)()
     yield s
     s.close()
 
