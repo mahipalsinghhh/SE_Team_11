@@ -1,11 +1,18 @@
-name: CI
+name: RLRS CI
 on:
   push:
     branches: [main]
   pull_request:
 jobs:
   test:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: "MIni Project/rlrs"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
