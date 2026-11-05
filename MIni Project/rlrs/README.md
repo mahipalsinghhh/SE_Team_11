@@ -20,6 +20,10 @@ python tests/ui/ui_smoke.py               # browser test; needs: pip install pla
 ```
 Results recorded 5 Nov 2026: `docs/test_evidence_2026-11-05.txt` (67 pytest tests passed, 9/9 browser steps); after the RLRS-6/RLRS-11 gap fixes: `docs/test_evidence_2026-11-05_utc_and_cross_lab.txt` (69 pytest tests passed). Screenshots: `tests/ui/screenshots/`.
 
+Health check (no login): `GET http://127.0.0.1:8000/api/health` returns `{"status": "ok", "db": "ok", ...}`.
+
+CI: `.github/workflows/rlrs-ci.yml` at the **repo root** runs `pytest` on Ubuntu, Windows and macOS for every PR and push to `main`.
+
 ## Layout
 | Path | What |
 |---|---|
