@@ -122,6 +122,9 @@ def make_handler(db_path, clock, transport):
             try:
                 now = clock()
                 query = parse_qs(url.query)
+                if url.path == "/api/health" and method == "GET":  # public liveness + DB check (RLRS-1)
+                    conn.execute("SELECT 1").fetchone()
+                    return self._send(200, {"status": "ok", "db": "ok", "time": now.strftime("%Y-%m-%dT%H:%M:%S")})
                 if method == "POST" and url.path in ("/api/login", "/api/register", "/api/logout"):
                     return self._auth(conn, url.path, now)
                 user = service.user_from_token(conn, self._token(), now)

@@ -15,10 +15,14 @@ Emails are written as text files to `./outbox/` (a local mail catcher). To use r
 python -m venv .venv
 # Windows PowerShell: .venv\Scripts\Activate.ps1      macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
-python -m pytest -v                       # 67 tests
+python -m pytest -v                       # 68 tests
 python tests/ui/ui_smoke.py               # browser test; needs: pip install playwright && playwright install chromium
 ```
 Results recorded 5 Nov 2026: `docs/test_evidence_2026-11-05.txt` (67 pytest tests passed, 9/9 browser steps). Screenshots: `tests/ui/screenshots/`.
+
+Health check (no login): `GET http://127.0.0.1:8000/api/health` returns `{"status": "ok", "db": "ok", ...}`.
+
+CI: `.github/workflows/rlrs-ci.yml` at the **repo root** runs `pytest` on Ubuntu, Windows and macOS for every PR and push to `main`.
 
 ## Layout
 | Path | What |
@@ -27,7 +31,7 @@ Results recorded 5 Nov 2026: `docs/test_evidence_2026-11-05.txt` (67 pytest test
 | `rlrs_app/service.py` | Business operations on SQLite; each booking is one `BEGIN IMMEDIATE` transaction |
 | `rlrs_app/server.py` | REST API + static file server + background worker |
 | `rlrs_app/static/` | Calendar UI (vanilla JS, no libraries) |
-| `tests/unit`, `tests/integration`, `tests/ui` | 37 unit, 30 integration/API tests, browser smoke test |
+| `tests/unit`, `tests/integration`, `tests/ui` | 37 unit, 31 integration/API tests, browser smoke test |
 | `docs/diagrams/` | PlantUML sources (not yet rendered or syntax-checked) |
 | `docs/DEMO_SCRIPT.md` | Step-by-step script for the 9 Nov presentation |
 
