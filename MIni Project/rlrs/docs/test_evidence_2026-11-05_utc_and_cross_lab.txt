@@ -1,0 +1,89 @@
+RLRS test evidence - 5 Nov 2026 (after RLRS-6 UTC storage + RLRS-11 cross-lab denial fixes)
+Branch: fix/rlrs-6-11-gaps (off feature/RLRS-webapp)
+Machine: Linux, Python 3.10.12
+Command: python -m pytest -v
+
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-9.2.0, pluggy-1.7.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /tmp/SE_Team_11/MIni Project/rlrs
+plugins: anyio-4.15.1, platformdirs-4.12.4
+collecting ... collected 69 items
+
+tests/integration/test_api.py::test_requires_login_and_session_lifecycle PASSED [  1%]
+tests/integration/test_api.py::test_cookie_is_httponly PASSED            [  2%]
+tests/integration/test_api.py::test_role_enforcement_is_server_side PASSED [  4%]
+tests/integration/test_api.py::test_booking_over_http_201_400_409 PASSED [  5%]
+tests/integration/test_api.py::test_cancel_over_http_and_other_user_forbidden PASSED [  7%]
+tests/integration/test_api.py::test_approval_flow_over_http PASSED       [  8%]
+tests/integration/test_api.py::test_errors_are_json_without_stack_traces PASSED [ 10%]
+tests/integration/test_api.py::test_sql_injection_strings_are_inert PASSED [ 11%]
+tests/integration/test_api.py::test_static_page_served_and_path_traversal_blocked PASSED [ 13%]
+tests/integration/test_service.py::test_booking_creates_reservation_email_reminder_audit PASSED [ 14%]
+tests/integration/test_service.py::test_conflict_returns_409_with_range_and_rolls_back PASSED [ 15%]
+tests/integration/test_service.py::test_rule_violations_return_400_with_codes PASSED [ 17%]
+tests/integration/test_service.py::test_inactive_equipment_cannot_be_booked PASSED [ 18%]
+tests/integration/test_service.py::test_concurrent_requests_for_same_slot_yield_exactly_one_booking PASSED [ 20%]
+tests/integration/test_service.py::test_cancel_frees_slot_and_cancels_reminder PASSED [ 21%]
+tests/integration/test_service.py::test_cancel_after_cutoff_refused PASSED [ 23%]
+tests/integration/test_service.py::test_student_cannot_cancel_someone_elses_reservation PASSED [ 24%]
+tests/integration/test_service.py::test_approval_flow_and_rejection PASSED [ 26%]
+tests/integration/test_service.py::test_student_cannot_approve PASSED    [ 27%]
+tests/integration/test_service.py::test_maintenance_cancels_overlapping_and_blocks_new_bookings PASSED [ 28%]
+tests/integration/test_service.py::test_attendance_only_after_slot_end_and_audited PASSED [ 30%]
+tests/integration/test_service.py::test_audit_never_contains_password PASSED [ 31%]
+tests/integration/test_service.py::test_utilisation_report_reconciles PASSED [ 33%]
+tests/integration/test_service.py::test_emails_flushed_once_and_retried_on_failure PASSED [ 34%]
+tests/integration/test_service.py::test_reminder_sent_two_hours_before_exactly_once_and_survives_restart PASSED [ 36%]
+tests/integration/test_service.py::test_no_reminder_after_cancellation PASSED [ 37%]
+tests/integration/test_service.py::test_register_login_and_bad_credentials PASSED [ 39%]
+tests/integration/test_service.py::test_equipment_management_permissions_and_search PASSED [ 40%]
+tests/integration/test_service.py::test_lab_hours_change_drives_the_calendar_grid PASSED [ 42%]
+tests/integration/test_service.py::test_availability_marks_own_booked_and_validates_range PASSED [ 43%]
+tests/integration/test_service.py::test_rlrs6_timestamps_stored_in_utc PASSED [ 44%]
+tests/integration/test_service.py::test_rlrs11_other_lab_incharge_denied PASSED [ 46%]
+tests/unit/test_attendance_audit.py::test_mark_completed_and_no_show_after_end PASSED [ 47%]
+tests/unit/test_attendance_audit.py::test_cannot_mark_before_slot_ends PASSED [ 49%]
+tests/unit/test_attendance_audit.py::test_only_confirmed_and_valid_outcomes PASSED [ 50%]
+tests/unit/test_attendance_audit.py::test_audit_records_actor_action_time_and_redacts_secrets PASSED [ 52%]
+tests/unit/test_conflict.py::test_before_and_after_do_not_conflict PASSED [ 53%]
+tests/unit/test_conflict.py::test_touching_back_to_back_is_accepted PASSED [ 55%]
+tests/unit/test_conflict.py::test_partial_overlap_rejected_with_range PASSED [ 56%]
+tests/unit/test_conflict.py::test_containing_and_contained_rejected PASSED [ 57%]
+tests/unit/test_conflict.py::test_identical_slot_rejected PASSED         [ 59%]
+tests/unit/test_conflict.py::test_other_equipment_unaffected PASSED      [ 60%]
+tests/unit/test_conflict.py::test_cancelled_slot_can_be_rebooked PASSED  [ 62%]
+tests/unit/test_conflict.py::test_pending_blocks_slot PASSED             [ 63%]
+tests/unit/test_conflict.py::test_maintenance_block_conflicts PASSED     [ 65%]
+tests/unit/test_maintenance.py::test_overlapping_active_reservations_are_cancelled PASSED [ 66%]
+tests/unit/test_maintenance.py::test_affected_does_not_mutate PASSED     [ 68%]
+tests/unit/test_reminders.py::test_reminder_scheduled_two_hours_before PASSED [ 69%]
+tests/unit/test_reminders.py::test_no_reminder_if_already_started PASSED [ 71%]
+tests/unit/test_reminders.py::test_booking_inside_lead_window_sends_immediately PASSED [ 72%]
+tests/unit/test_reminders.py::test_not_sent_before_due_time PASSED       [ 73%]
+tests/unit/test_reminders.py::test_sent_exactly_once_even_if_worker_runs_twice PASSED [ 75%]
+tests/unit/test_reminders.py::test_no_reminder_for_cancelled_or_rejected PASSED [ 76%]
+tests/unit/test_reminders.py::test_cancel_jobs_for_reservation PASSED    [ 78%]
+tests/unit/test_reminders.py::test_temporary_failure_is_retried_then_succeeds PASSED [ 79%]
+tests/unit/test_reminders.py::test_repeated_failure_marks_failed PASSED  [ 81%]
+tests/unit/test_report.py::test_known_dataset_reconciles PASSED          [ 82%]
+tests/unit/test_report.py::test_booking_outside_window_ignored_and_partial_clipped PASSED [ 84%]
+tests/unit/test_report.py::test_zero_available_hours_gives_zero_pct PASSED [ 85%]
+tests/unit/test_rules.py::test_valid_booking_has_no_violations PASSED    [ 86%]
+tests/unit/test_rules.py::test_past_start PASSED                         [ 88%]
+tests/unit/test_rules.py::test_outside_hours_boundaries PASSED           [ 89%]
+tests/unit/test_rules.py::test_multi_day_booking_rejected PASSED         [ 91%]
+tests/unit/test_rules.py::test_off_grid PASSED                           [ 92%]
+tests/unit/test_rules.py::test_advance_window_edge PASSED                [ 94%]
+tests/unit/test_rules.py::test_max_duration_edge PASSED                  [ 95%]
+tests/unit/test_rules.py::test_max_active_per_user PASSED                [ 97%]
+tests/unit/test_rules.py::test_user_cannot_double_book_same_time_on_other_equipment PASSED [ 98%]
+tests/unit/test_rules.py::test_all_violations_reported_together PASSED   [100%]
+
+============================== 69 passed in 8.79s ==============================
+
+Live server smoke test (python -m rlrs_app.server --seed):
+- login student1@lab.test -> 200
+- POST /api/reservations 10:00-11:00 lab-local (IST) -> 201 Confirmed, response start/end lab-local 10:00/11:00
+- SQLite reservations row stored as 04:30-05:30 UTC, created_at in UTC
+- GET availability shows slot 10:00 as 'own' (converted back to lab-local)
