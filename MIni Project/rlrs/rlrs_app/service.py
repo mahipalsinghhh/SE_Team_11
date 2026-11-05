@@ -1,16 +1,19 @@
 """RLRS service layer: SQLite persistence around the pure rlrs_core logic.
 
 Every public function takes an open connection and an explicit `now` so tests can use a fake clock.
-Lab times are stored as lab-local naive ISO strings (no time-zone conversion in this build).
+Datetimes crossing the API surface (request times, `now`, responses, emails) are lab-local naive;
+timestamps are stored in the database as UTC naive ISO strings (RLRS-6). The lab's offset from UTC
+defaults to +05:30 (IST) and can be changed with the RLRS_UTC_OFFSET env var (e.g. "+05:30", "-04:00").
 """
 from __future__ import annotations
 
 import json
+import os
 import re
 import secrets
 import sqlite3
 from contextlib import contextmanager
-from datetime import date, datetime, time, timedelta
+from datetime import date, datetime, time, timedelta, timezone
 
 from rlrs_core import reminders as rem
 from rlrs_core.attendance import AttendanceError, mark_attendance
@@ -59,6 +62,43 @@ def fmt(dt: datetime) -> str:
     return dt.strftime(FMT_S)
 
 
+def _lab_tz() -> timezone:
+    """Fixed lab offset from UTC (default +05:30, IST). Override with RLRS_UTC_OFFSET="+HH:MM"/"-HH:MM".
+    A fixed offset keeps the app dependency-free and identical on Windows/macOS/Linux; if the lab ever
+    sits in a DST-observing region this should switch to zoneinfo."""
+    raw = os.environ.get("RLRS_UTC_OFFSET", "+05:30").strip()
+    sign = 1
+    if raw.startswith("-"):
+        sign, raw = -1, raw[1:]
+    elif raw.startswith("+"):
+        raw = raw[1:]
+    hh, mm = raw.split(":")
+    return timezone(sign * timedelta(hours=int(hh), minutes=int(mm)))
+
+
+LAB_TZ = _lab_tz()
+
+
+def to_utc(dt: datetime) -> datetime:
+    """Lab-local naive -> UTC naive (for storage)."""
+    return dt.replace(tzinfo=LAB_TZ).astimezone(timezone.utc).replace(tzinfo=None)
+
+
+def to_local(dt: datetime) -> datetime:
+    """UTC naive -> lab-local naive (for display and lab-rule logic)."""
+    return dt.replace(tzinfo=timezone.utc).astimezone(LAB_TZ).replace(tzinfo=None)
+
+
+def fmtu(dt: datetime) -> str:
+    """Format a lab-local datetime as a UTC storage string."""
+    return fmt(to_utc(dt))
+
+
+def pst(s: str) -> datetime:
+    """Parse a stored UTC string back to lab-local naive."""
+    return to_local(datetime.strptime(s, FMT_S))
+
+
 @contextmanager
 def tx(conn: sqlite3.Connection):
     """One write transaction. BEGIN IMMEDIATE takes the database write lock up front, so
@@ -84,20 +124,20 @@ def _cfg(lab) -> LabConfig:
 
 def _res(r) -> Reservation:
     return Reservation(r["id"], r["user_id"], r["equipment_id"],
-                       Interval(parse_dt(r["start_ts"]), parse_dt(r["end_ts"])), Status(r["status"]))
+                       Interval(pst(r["start_ts"]), pst(r["end_ts"])), Status(r["status"]))
 
 
 def _block(r) -> MaintenanceBlock:
-    return MaintenanceBlock(r["id"], r["equipment_id"], Interval(parse_dt(r["start_ts"]), parse_dt(r["end_ts"])), r["reason"])
+    return MaintenanceBlock(r["id"], r["equipment_id"], Interval(pst(r["start_ts"]), pst(r["end_ts"])), r["reason"])
 
 
 def _audit(conn, actor, action, now, **details):
     conn.execute("INSERT INTO audit(actor,action,at,details) VALUES(?,?,?,?)",
-                 (actor, action, fmt(now), json.dumps(redact(details), default=str)))
+                 (actor, action, fmtu(now), json.dumps(redact(details), default=str)))
 
 
 def _email(conn, to, subject, body, now):
-    conn.execute("INSERT INTO email_jobs(to_email,subject,body,created_at) VALUES(?,?,?,?)", (to, subject, body, fmt(now)))
+    conn.execute("INSERT INTO email_jobs(to_email,subject,body,created_at) VALUES(?,?,?,?)", (to, subject, body, fmtu(now)))
 
 
 def _get(conn, table, id_, what):
@@ -127,7 +167,7 @@ def _res_dict(conn, r):
     eq = conn.execute("SELECT e.name, l.name AS lab FROM equipment e JOIN labs l ON l.id=e.lab_id WHERE e.id=?",
                       (r["equipment_id"],)).fetchone()
     return {"id": r["id"], "equipment_id": r["equipment_id"], "equipment": eq["name"], "lab": eq["lab"],
-            "start": r["start_ts"], "end": r["end_ts"], "status": r["status"], "reason": r["reason"]}
+            "start": fmt(pst(r["start_ts"])), "end": fmt(pst(r["end_ts"])), "status": r["status"], "reason": r["reason"]}
 
 
 # ---------- users / auth ----------
@@ -153,7 +193,7 @@ def login(conn, email, password, now):
     if not row or not ok:
         raise ApiError(401, "BAD_CREDENTIALS", "Invalid email or password.")
     token = secrets.token_urlsafe(32)
-    conn.execute("INSERT INTO sessions(token,user_id,expires) VALUES(?,?,?)", (token, row["id"], fmt(now + SESSION_TTL)))
+    conn.execute("INSERT INTO sessions(token,user_id,expires) VALUES(?,?,?)", (token, row["id"], fmtu(now + SESSION_TTL)))
     _audit(conn, row["email"], "auth.login", now)
     return token, public_user(row)
 
@@ -165,7 +205,7 @@ def logout(conn, token):
 def user_from_token(conn, token, now):
     if not token:
         return None
-    conn.execute("DELETE FROM sessions WHERE expires < ?", (fmt(now),))
+    conn.execute("DELETE FROM sessions WHERE expires < ?", (fmtu(now),))
     row = conn.execute("SELECT u.* FROM sessions s JOIN users u ON u.id=s.user_id WHERE s.token=?", (token,)).fetchone()
     return dict(row) if row else None
 
@@ -254,7 +294,7 @@ def availability(conn, user, eq_id, d_from, d_to, now):
         raise ApiError(400, "BAD_RANGE", "Date range must be 1 to 31 days.")
     eq = _get(conn, "equipment", eq_id, "Equipment")
     cfg = _cfg(_get(conn, "labs", eq["lab_id"], "Lab"))
-    w0, w1 = fmt(datetime.combine(df, time.min)), fmt(datetime.combine(dt + timedelta(days=1), time.min))
+    w0, w1 = fmtu(datetime.combine(df, time.min)), fmtu(datetime.combine(dt + timedelta(days=1), time.min))
     ress = [r for r in conn.execute(f"SELECT * FROM reservations WHERE equipment_id=? AND status IN {ACTIVE_SQL} AND start_ts<? AND end_ts>?", (eq_id, w1, w0))]
     blocks = [_block(r) for r in conn.execute("SELECT * FROM maintenance WHERE equipment_id=? AND start_ts<? AND end_ts>?", (eq_id, w1, w0))]
     step, slots, d = timedelta(minutes=cfg.slot_minutes), [], df
@@ -267,7 +307,7 @@ def availability(conn, user, eq_id, d_from, d_to, now):
                 state, label = "maintenance", "Maintenance"
             else:
                 for r in ress:
-                    if parse_dt(r["start_ts"]) < iv.end and iv.start < parse_dt(r["end_ts"]):
+                    if pst(r["start_ts"]) < iv.end and iv.start < pst(r["end_ts"]):
                         mine = r["user_id"] == user["id"]
                         state, rid = ("own" if mine else "booked"), (r["id"] if mine else None)
                         label = ("Yours" if mine else "Booked") + (" (pending)" if r["status"] == "Pending" else "")
@@ -285,7 +325,7 @@ def _schedule_reminder(conn, res: Reservation, now):
     job = rem.plan_reminder(res, now)
     if job:
         conn.execute("INSERT OR REPLACE INTO reminder_jobs(reservation_id,send_at,status,attempts) VALUES(?,?, 'Pending',0)",
-                     (res.id, fmt(job.send_at)))
+                     (res.id, fmtu(job.send_at)))
 
 
 def _cancel_reminders(conn, ids):
@@ -307,15 +347,15 @@ def create_reservation(conn, user, eq_id, start, end, now):
         violations = validate_booking(user["id"], eq_id, iv, now, cfg, mine)
         if violations:
             raise ApiError(400, "RULE_VIOLATION", "Booking rules violated.", [{"code": v.code, "message": v.message} for v in violations])
-        others = [_res(r) for r in conn.execute(f"SELECT * FROM reservations WHERE equipment_id=? AND status IN {ACTIVE_SQL} AND start_ts<? AND end_ts>?", (eq_id, fmt(e), fmt(s)))]
-        blocks = [_block(r) for r in conn.execute("SELECT * FROM maintenance WHERE equipment_id=? AND start_ts<? AND end_ts>?", (eq_id, fmt(e), fmt(s)))]
+        others = [_res(r) for r in conn.execute(f"SELECT * FROM reservations WHERE equipment_id=? AND status IN {ACTIVE_SQL} AND start_ts<? AND end_ts>?", (eq_id, fmtu(e), fmtu(s)))]
+        blocks = [_block(r) for r in conn.execute("SELECT * FROM maintenance WHERE equipment_id=? AND start_ts<? AND end_ts>?", (eq_id, fmtu(e), fmtu(s)))]
         conflicts = find_conflicts(eq_id, iv, others, blocks)
         if conflicts:
             raise ApiError(409, "CONFLICT", "That time slot is not available.",
                            [{"kind": c.kind, "start": fmt(c.interval.start), "end": fmt(c.interval.end)} for c in conflicts])
         status = Status.PENDING if eq["requires_approval"] else Status.CONFIRMED
         cur = conn.execute("INSERT INTO reservations(user_id,equipment_id,start_ts,end_ts,status,created_at) VALUES(?,?,?,?,?,?)",
-                           (user["id"], eq_id, fmt(s), fmt(e), status.value, fmt(now)))
+                           (user["id"], eq_id, fmtu(s), fmtu(e), status.value, fmtu(now)))
         res = Reservation(cur.lastrowid, user["id"], eq_id, iv, status)
         if status == Status.CONFIRMED:
             _schedule_reminder(conn, res, now)
@@ -341,12 +381,12 @@ def cancel_reservation(conn, user, res_id, now):
             raise ApiError(403, "FORBIDDEN", "You can only cancel your own reservations.")
         if r["status"] not in ("Pending", "Confirmed"):
             raise ApiError(409, "NOT_CANCELLABLE", f"A {r['status']} reservation cannot be cancelled.")
-        if owner and user["role"] == "Student" and now > parse_dt(r["start_ts"]) - CANCEL_CUTOFF:
+        if owner and user["role"] == "Student" and now > pst(r["start_ts"]) - CANCEL_CUTOFF:
             raise ApiError(409, "CUTOFF_PASSED", "Reservations cannot be cancelled within 60 minutes of the start.")
         conn.execute("UPDATE reservations SET status='Cancelled' WHERE id=?", (res_id,))
         _cancel_reminders(conn, [res_id])
         holder = conn.execute("SELECT email FROM users WHERE id=?", (r["user_id"],)).fetchone()
-        _email(conn, holder["email"], "Reservation cancelled", f"Your reservation for {eq['name']} at {r['start_ts'][:16]} was cancelled.", now)
+        _email(conn, holder["email"], "Reservation cancelled", f"Your reservation for {eq['name']} at {fmt(pst(r['start_ts']))[:16]} was cancelled.", now)
         _audit(conn, user["email"], "reservation.cancel", now, reservation_id=res_id)
     return _res_dict(conn, _get(conn, "reservations", res_id, "Reservation"))
 
@@ -386,7 +426,7 @@ def approve_reservation(conn, user, res_id, now):
         res = _res(_get(conn, "reservations", res_id, "Reservation"))
         _schedule_reminder(conn, res, now)
         holder = conn.execute("SELECT email FROM users WHERE id=?", (r["user_id"],)).fetchone()
-        _email(conn, holder["email"], "Reservation approved", f"Your reservation for {eq['name']} at {r['start_ts'][:16]} was approved.", now)
+        _email(conn, holder["email"], "Reservation approved", f"Your reservation for {eq['name']} at {fmt(pst(r['start_ts']))[:16]} was approved.", now)
         _audit(conn, user["email"], "reservation.approve", now, reservation_id=res_id)
     return _res_dict(conn, _get(conn, "reservations", res_id, "Reservation"))
 
@@ -403,7 +443,7 @@ def reject_reservation(conn, user, res_id, reason, now):
             raise ApiError(409, "NOT_PENDING", "Only Pending reservations can be rejected.")
         conn.execute("UPDATE reservations SET status='Rejected', reason=? WHERE id=?", (reason, res_id))
         holder = conn.execute("SELECT email FROM users WHERE id=?", (r["user_id"],)).fetchone()
-        _email(conn, holder["email"], "Reservation rejected", f"Your reservation for {eq['name']} at {r['start_ts'][:16]} was rejected: {reason}", now)
+        _email(conn, holder["email"], "Reservation rejected", f"Your reservation for {eq['name']} at {fmt(pst(r['start_ts']))[:16]} was rejected: {reason}", now)
         _audit(conn, user["email"], "reservation.reject", now, reservation_id=res_id, reason=reason)
     return _res_dict(conn, _get(conn, "reservations", res_id, "Reservation"))
 
@@ -415,7 +455,7 @@ def add_maintenance(conn, user, eq_id, start, end, reason, now):
     with tx(conn):
         eq = _get(conn, "equipment", eq_id, "Equipment")
         _require_lab_staff(conn, user, eq["lab_id"])
-        cur = conn.execute("INSERT INTO maintenance(equipment_id,start_ts,end_ts,reason) VALUES(?,?,?,?)", (eq_id, fmt(s), fmt(e), (reason or "").strip()))
+        cur = conn.execute("INSERT INTO maintenance(equipment_id,start_ts,end_ts,reason) VALUES(?,?,?,?)", (eq_id, fmtu(s), fmtu(e), (reason or "").strip()))
         block = MaintenanceBlock(cur.lastrowid, eq_id, Interval(s, e), reason or "")
         active = [_res(r) for r in conn.execute(f"SELECT * FROM reservations WHERE equipment_id=? AND status IN {ACTIVE_SQL}", (eq_id,))]
         hit = apply_block(block, active)  # core logic marks overlapping reservations Cancelled
@@ -461,7 +501,7 @@ def utilisation(conn, user, d_from, d_to, now):
     for e in eqs:
         c = _cfg(labs[e["lab_id"]])
         hours[e["id"]] = days * (datetime.combine(date.min, c.close_time) - datetime.combine(date.min, c.open_time)).total_seconds() / 3600
-    ress = [_res(r) for r in conn.execute("SELECT * FROM reservations WHERE start_ts<? AND end_ts>?", (fmt(window.end), fmt(window.start)))]
+    ress = [_res(r) for r in conn.execute("SELECT * FROM reservations WHERE start_ts<? AND end_ts>?", (fmtu(window.end), fmtu(window.start)))]
     rep = utilisation_report(ress, hours, window)
     names = {e["id"]: e["name"] for e in eqs}
     return [{"equipment_id": k, "equipment": names[k], "booked_hours": round(v.booked_hours, 2), "available_hours": round(v.available_hours, 2),
@@ -471,15 +511,15 @@ def utilisation(conn, user, d_from, d_to, now):
 
 def audit_list(conn, user, limit=100):
     require_role(user, *STAFF)
-    return [{"actor": r["actor"], "action": r["action"], "at": r["at"], "details": json.loads(r["details"])}
+    return [{"actor": r["actor"], "action": r["action"], "at": fmt(pst(r["at"])), "details": json.loads(r["details"])}
             for r in conn.execute("SELECT * FROM audit ORDER BY id DESC LIMIT ?", (int(limit),))]
 
 
 # ---------- background work ----------
 def run_reminders(conn, transport, now) -> dict:
     rows = conn.execute("SELECT * FROM reminder_jobs WHERE status='Pending'").fetchall()
-    jobs = [rem.ReminderJob(r["reservation_id"], parse_dt(r["send_at"]), rem.JobStatus.PENDING, r["attempts"],
-                            parse_dt(r["next_attempt_at"]) if r["next_attempt_at"] else None) for r in rows]
+    jobs = [rem.ReminderJob(r["reservation_id"], pst(r["send_at"]), rem.JobStatus.PENDING, r["attempts"],
+                            pst(r["next_attempt_at"]) if r["next_attempt_at"] else None) for r in rows]
     ids = [j.reservation_id for j in jobs]
     if not ids:
         return {"sent": 0, "retry": 0, "failed": 0, "cancelled": 0}
@@ -496,13 +536,13 @@ def run_reminders(conn, transport, now) -> dict:
     stats = rem.process_due(jobs, reservations, now, send)
     for j in jobs:
         conn.execute("UPDATE reminder_jobs SET status=?, attempts=?, next_attempt_at=? WHERE reservation_id=?",
-                     (j.status.value, j.attempts, fmt(j.next_attempt_at) if j.next_attempt_at else None, j.reservation_id))
+                     (j.status.value, j.attempts, fmtu(j.next_attempt_at) if j.next_attempt_at else None, j.reservation_id))
     return stats
 
 
 def flush_emails(conn, transport, now, max_attempts=3, backoff=timedelta(minutes=5)) -> dict:
     stats = {"sent": 0, "retry": 0, "failed": 0}
-    rows = conn.execute("SELECT * FROM email_jobs WHERE status='Pending' AND (next_attempt_at IS NULL OR next_attempt_at<=?) ORDER BY id", (fmt(now),)).fetchall()
+    rows = conn.execute("SELECT * FROM email_jobs WHERE status='Pending' AND (next_attempt_at IS NULL OR next_attempt_at<=?) ORDER BY id", (fmtu(now),)).fetchall()
     for r in rows:
         attempts = r["attempts"] + 1
         try:
@@ -512,7 +552,7 @@ def flush_emails(conn, transport, now, max_attempts=3, backoff=timedelta(minutes
                 conn.execute("UPDATE email_jobs SET status='Failed', attempts=? WHERE id=?", (attempts, r["id"]))
                 stats["failed"] += 1
             else:
-                conn.execute("UPDATE email_jobs SET attempts=?, next_attempt_at=? WHERE id=?", (attempts, fmt(now + backoff), r["id"]))
+                conn.execute("UPDATE email_jobs SET attempts=?, next_attempt_at=? WHERE id=?", (attempts, fmtu(now + backoff), r["id"]))
                 stats["retry"] += 1
         else:
             conn.execute("UPDATE email_jobs SET status='Sent', attempts=? WHERE id=?", (attempts, r["id"]))
