@@ -147,3 +147,11 @@ def test_static_page_served_and_path_traversal_blocked(base):
             raise AssertionError(f"served {p}")
         except urllib.error.HTTPError as e:
             assert e.code == 404
+
+
+def test_health_endpoint_is_public_and_checks_db(base):
+    """RLRS-1: /api/health answers without login and confirms the database is reachable."""
+    s, b, _ = Client(base).call("GET", "/api/health")
+    assert s == 200
+    assert b["status"] == "ok" and b["db"] == "ok"
+    assert Client(base).call("POST", "/api/health")[0] in (404, 405)
