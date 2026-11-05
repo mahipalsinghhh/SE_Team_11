@@ -21,7 +21,7 @@ Course: Software Engineering, CSE(AIML), PES University. Mini-project, 4 members
 - **Documents:** `MIni Project/Document/` holds the SRS, SAD and Test Plan drafts (30-31 Oct).
 
 ## 3. Decisions already made (do not reopen without telling Mahipal)
-- **Stack (recommended, approved by Mahipal):** FastAPI, SQLAlchemy, **SQLite**, APScheduler, FullCalendar on a plain HTML/JS front end, pytest. No PostgreSQL: SQLite runs the same on Windows and Mac. (The SRS/SAD say PostgreSQL is preferred: update them in RLRS-15. The concurrency guard becomes one locked transaction (`BEGIN IMMEDIATE`) around check-then-insert.)
+- **Stack as built:** standard-library Python (http.server) + **SQLite** + plain HTML/JS calendar, pytest. (Originally planned: FastAPI, SQLAlchemy, APScheduler, FullCalendar; not installable while building.) No PostgreSQL: SQLite runs the same on Windows and Mac. (The SRS/SAD say PostgreSQL is preferred: update them in RLRS-15. The concurrency guard becomes one locked transaction (`BEGIN IMMEDIATE`) around check-then-insert.)
 - **Architecture:** layered modular monolith: browser UI, REST API, scheduling engine, data layer, reminder worker.
 - **Scope:** Must = auth, labs/equipment, calendar, reservation with conflict detection and rules, cancel, confirmation and reminder emails. Should = approval, maintenance, attendance, audit. Could = utilisation report. If time runs out, drop in this order: RLRS-14, 13, 12, 11.
 - **Time zone/storage:** timestamps stored in UTC, shown in the lab's time zone. Time ranges are half-open `[start, end)`: back-to-back bookings are allowed.
@@ -38,18 +38,22 @@ Course: Software Engineering, CSE(AIML), PES University. Mini-project, 4 members
 
 Every story has acceptance criteria and links to SRS requirement IDs and Test Plan case IDs in its description. **Read the story before coding it.**
 
-## 5. What is actually built (verified)
-In `MIni Project/rlrs/` (pure Python, no web/DB dependencies): `conflict.py`, `rules.py`, `reminders.py`, `maintenance.py`, `attendance.py`, `audit.py`, `report.py`, with **37 unit tests, all passing** (`rlrs/docs/test_evidence_unit_2026-10-31.txt`). UML sources (PlantUML: use case, class, 2 sequence, activity, component) are in `rlrs/docs/diagrams/`.
-This is the *logic core* behind RLRS-4, 5, 10, 12, 13 and 14, so **those Jira stories are still To Do** (see their comments). The API, database and UI do not exist.
+## 5. What is actually built (verified 5 Nov 2026)
+In `MIni Project/rlrs/`, see its README:
+- **Logic core** (`rlrs_core/`, merged earlier): conflict detection, booking rules, reminders, maintenance, attendance, audit, report: 37 unit tests.
+- **Working app (no installs)**, branch `feature/RLRS-webapp` / PR: standard-library Python + SQLite + vanilla-JS calendar. Sign-in with roles, equipment and lab-hours management, availability calendar, booking with rules and conflict detection in one locked transaction, cancel with cutoff, approval, maintenance (cancels bookings, emails holders), attendance, audit log, utilisation report, confirmation emails and a reminder worker with retry.
+- **Tests:** 67 pytest tests passed (incl. 10 parallel bookings of one slot give exactly one success) and a 9-step browser test passed. Evidence: `rlrs/docs/test_evidence_2026-11-05.txt`.
+- **Demo script:** `rlrs/docs/DEMO_SCRIPT.md`.
 
-**Not built / not verified:** FastAPI app, SQLAlchemy models/SQLite, auth, equipment CRUD, reservation endpoint, calendar UI, SMTP sending, APScheduler wiring, integration tests, CI has never run on GitHub, UML not yet rendered or syntax-checked.
+**Deviations (the SRS/SAD/Test Plan must be updated to say this, RLRS-15):** standard library instead of FastAPI/SQLAlchemy/APScheduler/FullCalendar (pypi was blocked in the build session); lab-local times, no UTC conversion; HTTPS, CSRF tokens, login rate limiting not implemented.
 
-## 6. What each person does next
-- **Lakshya (first, today/Sun 1 Nov):** RLRS-1, the project skeleton. Others are blocked on it. Wire `rlrs_core` into the app instead of rewriting the logic. Push by Sunday 1 Nov.
-- **Deepesh:** RLRS-2 and RLRS-3 once the skeleton is on `main`; the calendar UI (RLRS-7) after the API exists.
-- **Lakshya (after skeleton):** RLRS-6 should call `rlrs_core.rules.validate_booking` then `conflict.find_conflicts` inside one locked transaction (see `03_sequence_booking.puml`).
-- **Mahipal:** wire RLRS-10/12/13/14 into the API once the database exists; then RLRS-15.
-- **Venkat:** accept the Jira invite, clone the repo, run the tests; Mahipal will assign stories.
+**Not verified:** real SMTP, Windows and macOS runs (built and tested on Linux only), GitHub Actions run, performance target (20k reservations), PlantUML rendering. **Run `python -m pytest -v` and the app on your own machine before the demo.**
+
+## 6. What each person does next (deadline: presentation Mon 9 Nov)
+- **Everyone:** pull `main` after the app PR is merged, run `python -m rlrs_app.server --seed` and `python -m pytest -v` on your own OS (Deepesh: macOS, use `python3`). Report any failure to Mahipal with the terminal output.
+- **Story owners:** open your Jira stories, read the acceptance criteria, try them in the running app, and write down what passes and fails. Only move a story to Done if you verified every acceptance criterion yourself.
+- **Mahipal (RLRS-15):** update SRS, SAD and Test Plan to match section 5 deviations; fill the Test Plan roles table; rehearse `DEMO_SCRIPT.md`.
+- **Venkat:** accept the Jira invite and take the documentation edits and the Windows run-through.
 
 ## 7. Git workflow (required)
 Branch from `main`, one branch per Jira story, Jira key in branch and commit, open a Pull Request, get one review, merge. (The repo README currently says "push to main"; Mahipal will update it. Use PRs.)
