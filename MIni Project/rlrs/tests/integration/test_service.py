@@ -230,3 +230,32 @@ def test_availability_marks_own_booked_and_validates_range(conn, s1, s2):
     assert {s["start"][11:16]: s["state"] for s in service.availability(conn, s2, 1, D, D, NOW)["slots"]}["10:00"] == "booked"
     assert err(service.availability, conn, s1, 1, D, "2026-12-30", NOW).code == "BAD_RANGE"
     assert err(service.availability, conn, s1, 1, "garbage", D, NOW).code == "BAD_DATE"
+
+
+# ---- RLRS-6: timestamps stored in UTC ----
+def test_rlrs6_timestamps_stored_in_utc(conn, s1):
+    r = book(conn, s1, 1, 10, 11)  # input is lab-local time
+    row = conn.execute("SELECT start_ts, end_ts, created_at FROM reservations WHERE id=?", (r["id"],)).fetchone()
+    # default lab offset is +05:30 (IST): stored values must be UTC
+    assert row["start_ts"] == f"{D}T04:30:00" and row["end_ts"] == f"{D}T05:30:00"
+    assert row["created_at"] == "2026-11-06T02:30:00"  # NOW = Fri 08:00 IST -> 02:30 UTC
+    # API responses still speak lab-local time
+    assert r["start"] == f"{D}T10:00:00" and r["end"] == f"{D}T11:00:00"
+    slots = {s["start"][11:16]: s["state"] for s in service.availability(conn, s1, 1, D, D, NOW)["slots"]}
+    assert slots["10:00"] == "own"  # converted back to lab-local for display
+
+
+# ---- RLRS-11: only that lab's in-charge can act ----
+def test_rlrs11_other_lab_incharge_denied(conn, s1, staff):
+    # Equipment 3 (3D Printer) needs approval and sits in lab 2; give lab 2 its own in-charge
+    # so `staff` (in-charge of lab 1) is no longer that lab's manager.
+    other = service.register_user(conn, "Other In-charge", "incharge2@lab.test", "incharge123", "LabInCharge")
+    conn.execute("UPDATE labs SET incharge_id=? WHERE id=2", (other["id"],))
+    r = book(conn, s1, 3, 10, 11)
+    assert r["status"] == "Pending"
+    # an in-charge from another lab gets 403 on approve and reject
+    assert err(service.approve_reservation, conn, staff, r["id"], NOW).status == 403
+    assert err(service.reject_reservation, conn, staff, r["id"], "not my lab", NOW).status == 403
+    # lab 2's own in-charge can act
+    other_user = dict(conn.execute("SELECT * FROM users WHERE email='incharge2@lab.test'").fetchone())
+    assert service.approve_reservation(conn, other_user, r["id"], NOW)["status"] == "Confirmed"
