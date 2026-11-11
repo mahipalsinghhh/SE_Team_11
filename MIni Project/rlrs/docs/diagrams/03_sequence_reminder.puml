@@ -1,11 +1,11 @@
 @startuml
 title RLRS - Sequence: Reminder worker (RLRS-10)
-participant "Scheduler (every minute)" as S
-participant "ReminderWorker" as W
+participant "Worker Thread (every 30s)" as S
+participant "ReminderWorker (rlrs_core/reminders.py)" as W
 database "SQLite" as DB
-participant "SMTP" as M
-S -> W : tick(now)
-W -> DB : SELECT Pending jobs due <= now
+participant "Mailer (SMTP / FileTransport)" as M
+S -> W : worker_tick(now)
+W -> DB : SELECT Pending reminder_jobs due <= now
 loop each job
   W -> DB : load reservation
   alt cancelled / rejected / started
