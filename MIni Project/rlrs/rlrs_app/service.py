@@ -164,10 +164,11 @@ def public_user(u):
 
 
 def _res_dict(conn, r):
-    eq = conn.execute("SELECT e.name, l.name AS lab FROM equipment e JOIN labs l ON l.id=e.lab_id WHERE e.id=?",
+    eq = conn.execute("SELECT e.name, e.remote_info, l.name AS lab FROM equipment e JOIN labs l ON l.id=e.lab_id WHERE e.id=?",
                       (r["equipment_id"],)).fetchone()
     return {"id": r["id"], "equipment_id": r["equipment_id"], "equipment": eq["name"], "lab": eq["lab"],
-            "start": fmt(pst(r["start_ts"])), "end": fmt(pst(r["end_ts"])), "status": r["status"], "reason": r["reason"]}
+            "start": fmt(pst(r["start_ts"])), "end": fmt(pst(r["end_ts"])), "status": r["status"], "reason": r["reason"],
+            "remote_info": eq["remote_info"] if r["status"] == "Confirmed" else ""}
 
 
 # ---------- users / auth ----------
@@ -250,7 +251,17 @@ def list_equipment(conn, user, lab_id=None, type_=None, q=None):
     if q:
         like = f"%{q}%"
         sql, args = sql + " AND (e.name LIKE ? OR e.description LIKE ?)", args + [like, like]
-    return [_eq_dict(r) for r in conn.execute(sql + " ORDER BY l.name, e.name", args)]
+    confirmed_eq = None
+    if user["role"] == "Student":
+        confirmed_eq = {r["equipment_id"] for r in conn.execute(
+            "SELECT DISTINCT equipment_id FROM reservations WHERE user_id=? AND status='Confirmed'", (user["id"],))}
+    out = []
+    for r in conn.execute(sql + " ORDER BY l.name, e.name", args):
+        d = _eq_dict(r)
+        if confirmed_eq is not None and d["id"] not in confirmed_eq:
+            d["remote_info"] = ""
+        out.append(d)
+    return out
 
 
 def _eq_fields(data, existing=None):

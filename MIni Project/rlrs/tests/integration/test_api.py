@@ -98,7 +98,14 @@ def test_booking_over_http_201_400_409(base):
 def test_cancel_over_http_and_other_user_forbidden(base):
     a = Client(base).login("student1@lab.test", "student123")
     b = Client(base).login("student2@lab.test", "student123")
-    rid = a.call("POST", "/api/reservations", {"equipment_id": 1, "start": f"{D}T10:00", "end": f"{D}T11:00"})[1]["id"]
+    ic = Client(base).login("incharge@lab.test", "incharge123")
+    ic.call("PUT", "/api/equipment/1", {"remote_info": "ssh://scope1.lab.local"})
+    assert b.call("GET", "/api/equipment")[1][0]["remote_info"] == ""
+    res = a.call("POST", "/api/reservations", {"equipment_id": 1, "start": f"{D}T10:00", "end": f"{D}T11:00"})[1]
+    rid = res["id"]
+    assert res["remote_info"] == "ssh://scope1.lab.local"
+    assert a.call("GET", "/api/equipment")[1][0]["remote_info"] == "ssh://scope1.lab.local"
+    assert b.call("GET", "/api/equipment")[1][0]["remote_info"] == ""
     assert b.call("POST", f"/api/reservations/{rid}/cancel")[0] == 403
     assert a.call("POST", f"/api/reservations/{rid}/cancel")[1]["status"] == "Cancelled"
     assert a.call("POST", f"/api/reservations/{rid}/cancel")[0] == 409

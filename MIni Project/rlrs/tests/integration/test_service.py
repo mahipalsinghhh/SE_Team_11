@@ -101,6 +101,26 @@ def test_student_cannot_cancel_someone_elses_reservation(conn, s1, s2):
     assert service.list_mine(conn, s1)[0]["status"] == "Confirmed"
 
 
+def test_rlrs8_remote_info_restricted_to_confirmed_holder_and_staff(conn, s1, s2, staff):
+    service.update_equipment(conn, staff, 1, {"remote_info": "ssh://lab1-scope.local"}, NOW)
+    service.update_equipment(conn, staff, 3, {"remote_info": "http://printer.local:8080"}, NOW)
+    # Before booking, students do not see remote_info; staff does
+    assert {e["id"]: e["remote_info"] for e in service.list_equipment(conn, s1)}[1] == ""
+    assert {e["id"]: e["remote_info"] for e in service.list_equipment(conn, staff)}[1] == "ssh://lab1-scope.local"
+    # Pending reservation does not expose remote_info
+    pending = book(conn, s1, 3, 10, 11)
+    assert pending["status"] == "Pending" and pending["remote_info"] == ""
+    assert {e["id"]: e["remote_info"] for e in service.list_equipment(conn, s1)}[3] == ""
+    # Confirmed reservation exposes remote_info only to its holder (s1), not to s2
+    confirmed = book(conn, s1, 1, 12, 13)
+    assert confirmed["status"] == "Confirmed" and confirmed["remote_info"] == "ssh://lab1-scope.local"
+    assert {e["id"]: e["remote_info"] for e in service.list_equipment(conn, s1)}[1] == "ssh://lab1-scope.local"
+    assert {e["id"]: e["remote_info"] for e in service.list_equipment(conn, s2)}[1] == ""
+    # Cancelling revokes remote_info visibility
+    service.cancel_reservation(conn, s1, confirmed["id"], NOW)
+    assert {e["id"]: e["remote_info"] for e in service.list_equipment(conn, s1)}[1] == ""
+
+
 # ---- RLRS-11: approval ----
 def test_approval_flow_and_rejection(conn, s1, s2, staff):
     r = book(conn, s1, 3, 10, 11)  # 3D printer requires approval
