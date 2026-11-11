@@ -1,18 +1,89 @@
 @startuml
 title RLRS - Class Diagram (domain + engine)
-enum Status { Pending Confirmed Cancelled Rejected Completed NoShow }
-enum JobStatus { Pending Sent Failed Cancelled }
-class User { +id +name +email +role : Student|LabInCharge|Admin +password_hash }
-class Lab { +id +name +open_time +close_time +slot_minutes +max_duration +advance_days +max_active_per_user }
-class Equipment { +id +name +type +active : bool +requires_approval : bool +remote_access_info }
-class Reservation { +id +status : Status +interval : Interval +created_at }
-class MaintenanceBlock { +id +interval : Interval +reason }
-class ReminderJob { +send_at +status : JobStatus +attempts +next_attempt_at }
-class AuditEvent { +actor +action +at +details }
-class Interval << (V,#eee) >> { +start +end +overlaps(other) +minutes }
-class SchedulingEngine { +find_conflicts(eq, interval, reservations, blocks) +validate_booking(...) : Violation[] }
-class ReminderWorker { +process_due(jobs, reservations, now, send) }
-class ReportService { +utilisation_report(reservations, hours, window) }
+enum Status {
+  Pending
+  Confirmed
+  Cancelled
+  Rejected
+  Completed
+  NoShow
+}
+enum JobStatus {
+  Pending
+  Sent
+  Failed
+  Cancelled
+}
+class User {
+  +id : int
+  +name : str
+  +email : str
+  +role : Student|LabInCharge|Admin
+  +pw_hash : str
+}
+class Lab {
+  +id : int
+  +name : str
+  +open_time : time
+  +close_time : time
+  +slot_minutes : int
+  +max_duration : int
+  +advance_days : int
+  +max_active : int
+}
+class Equipment {
+  +id : int
+  +lab_id : int
+  +name : str
+  +type : str
+  +active : bool
+  +requires_approval : bool
+  +remote_info : str
+}
+class Reservation {
+  +id : int
+  +user_id : int
+  +equipment_id : int
+  +status : Status
+  +interval : Interval
+  +created_at : datetime
+}
+class MaintenanceBlock {
+  +id : int
+  +equipment_id : int
+  +interval : Interval
+  +reason : str
+}
+class ReminderJob {
+  +reservation_id : int
+  +send_at : datetime
+  +status : JobStatus
+  +attempts : int
+  +next_attempt_at : datetime
+}
+class AuditEvent {
+  +actor : str
+  +action : str
+  +at : datetime
+  +details : dict
+}
+class Interval << (V,#eee) >> {
+  +start : datetime
+  +end : datetime
+  +overlaps(other : Interval) : bool
+  +minutes : int
+}
+class SchedulingEngine {
+  +find_conflicts(eq_id, interval, reservations, blocks) : Conflict[]
+  +validate_booking(user_id, eq_id, interval, now, cfg, active) : Violation[]
+}
+class ReminderWorker {
+  +plan_reminder(res, now) : ReminderJob
+  +process_due(jobs, reservations, now, send) : dict
+}
+class ReportService {
+  +utilisation_report(reservations, hours, window) : dict
+}
 Lab "1" o-- "*" Equipment
 User "1" -- "*" Reservation : books
 Equipment "1" -- "*" Reservation

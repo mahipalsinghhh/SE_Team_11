@@ -1,23 +1,24 @@
 @startuml
 title RLRS - Component Diagram (layered modular monolith)
-package "Browser" { [Calendar UI (FullCalendar)] as UI }
-package "Application (FastAPI)" {
-  [REST API + Auth] as API
-  [Scheduling Engine\n(rlrs_core: conflict, rules)] as ENG
-  [Maintenance / Attendance / Audit] as OPS
-  [Report Service] as REP
+package "Browser" {
+  [Calendar UI (rlrs_app/static/app.js)] as UI
 }
-package "Background" { [Reminder Worker (APScheduler)] as WRK }
-database "SQLite (SQLAlchemy)" as DB
-cloud "SMTP server" as SMTP
-UI --> API : HTTPS / JSON
-API --> ENG
-API --> OPS
-API --> REP
-API --> DB
-OPS --> DB
-REP --> DB
+package "Application Process (Python stdlib http.server)" {
+  [REST API + Auth\n(server.py, security.py)] as API
+  [Service Layer\n(rlrs_app/service.py)] as SVC
+  [Scheduling Engine\n(rlrs_core: conflict, rules)] as ENG
+  [Maintenance / Attendance / Audit\n(rlrs_core)] as OPS
+  [Report Engine\n(rlrs_core/report.py)] as REP
+  [Background Worker Thread\n(worker_loop every 30s)] as WRK
+}
+database "SQLite (rlrs.db)" as DB
+cloud "SMTP / FileTransport (outbox/)" as SMTP
+UI --> API : HTTP / JSON
+API --> SVC
+SVC --> ENG
+SVC --> OPS
+SVC --> REP
+SVC --> DB : BEGIN IMMEDIATE
 WRK --> DB
-WRK --> SMTP
-API ..> SMTP : confirmation emails (via email jobs)
+WRK --> SMTP : send reminders & queued emails
 @enduml
