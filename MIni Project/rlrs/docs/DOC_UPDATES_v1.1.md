@@ -20,7 +20,7 @@ The test count changes as PRs merge. Before exporting the PDFs, take the final n
 
 | Placeholder | Value now | Changes when |
 |---|---|---|
-| `[TOTAL]` | **68** (37 unit + 31 integration/API), after PR #4 | Lakshya's `fix/rlrs-6-11-gaps` adds 2 tests, giving 70 |
+| `[TOTAL]` | **71** (37 unit + 34 integration/API), after PR #4, PR #6, and Deepesh's RLRS-8/F-017 fix | Final count on `main` |
 | `[CI-OS]` | Ubuntu, Windows, macOS (Python 3.12) | Only if all three CI jobs pass on `main` |
 | `[UI]` | 9/9 browser steps (Playwright, Chromium, run 4–5 Nov in the build sandbox) | Re-run if UI changes |
 
@@ -105,7 +105,7 @@ Do not change the requirement wording (it is the agreed requirement). Instead, s
 | RLRS-F-014 | Event emails | `service._email`, `mailer.py` | `test_booking_creates_reservation_email_reminder_audit`, `test_emails_flushed_once_and_retried_on_failure` | Passed to outbox; real SMTP not tested |
 | RLRS-F-015 | Reminder email | `rlrs_core/reminders.py`, worker | `test_reminder_sent_two_hours_before_exactly_once_and_survives_restart`, `test_no_reminder_after_cancellation`, 9 unit tests | Passed (automated) |
 | RLRS-F-016 | Retry failed emails | worker in `server.py`, `reminders.py` | `test_temporary_failure_is_retried_then_succeeds`, `test_repeated_failure_marks_failed` | Passed (automated) |
-| RLRS-F-017 | Remote-access info for holder only | `equipment.remote_info` | none | **Not met:** remote-access text is currently shown to every signed-in user |
+| RLRS-F-017 | Remote-access info for holder only | `service.list_equipment`, `service._res_dict` | `test_rlrs8_remote_info_restricted_to_confirmed_holder_and_staff`, `test_cancel_over_http_and_other_user_forbidden` | Passed (automated) |
 | RLRS-F-018 | Attendance | `rlrs_core/attendance.py` | `test_attendance_only_after_slot_end_and_audited`, 3 unit tests | Passed (automated) |
 | RLRS-F-019 | Utilisation report | `rlrs_core/report.py` | `test_utilisation_report_reconciles`, 3 unit tests, UI step 7 | Passed (automated) |
 | RLRS-F-020 | Configure rules | `PUT /api/labs/{id}` | `test_lab_hours_change_drives_the_calendar_grid` | Partial: per-lab rules editable; lead time and cut-off fixed |
@@ -122,7 +122,7 @@ Do not change the requirement wording (it is the agreed requirement). Instead, s
 | RLRS-SR-001/002 | AuthN/AuthZ server-side | `service.py` | `test_role_enforcement_is_server_side` | Passed (automated) |
 | RLRS-SR-003 | Salted hashing | `security.py` | `test_audit_never_contains_password` | Passed (automated) |
 | RLRS-SR-004 | Input validation | `server.py`, `service.py` | `test_sql_injection_strings_are_inert`, `test_rule_violations_return_400_with_codes` | Passed (automated) |
-| RLRS-SR-005 | Record-level access | `service.cancel_reservation`, lab staff check | `test_student_cannot_cancel_someone_elses_reservation`, `test_cancel_over_http_and_other_user_forbidden` | Partial: cancel protected; remote-access info not restricted (see F-017); cross-lab in-charge test only on Lakshya's branch |
+| RLRS-SR-005 | Record-level access | `service.cancel_reservation`, `service.list_equipment`, lab staff check | `test_student_cannot_cancel_someone_elses_reservation`, `test_cancel_over_http_and_other_user_forbidden`, `test_rlrs8_remote_info_restricted_to_confirmed_holder_and_staff`, `test_rlrs11_other_lab_incharge_denied` | Passed (automated) |
 | RLRS-SR-006 | Secrets via env vars | `mailer.py` | inspection | Passed (inspection: SMTP settings read from environment, none in repo) |
 | RLRS-SR-007 | Audit without secrets | `rlrs_core/audit.py` | `test_audit_records_actor_action_time_and_redacts_secrets` | Passed (automated) |
 
@@ -302,7 +302,7 @@ All errors are JSON `{error, message, details}` with no stack traces.
 | TC-PERF-01 | none | **Not run** |
 | TC-RESTART-01 | `test_reminder_sent_two_hours_before_exactly_once_and_survives_restart` | Pass |
 | TC-SEC-01 | `test_audit_never_contains_password`, `test_cookie_is_httponly`; repo inspection | Pass |
-| TC-SEC-02 | `test_student_cannot_cancel_someone_elses_reservation`, `test_cancel_over_http_and_other_user_forbidden` | **Partial**: cancel part passes; remote-access part fails (info visible to all) |
+| TC-SEC-02 | `test_student_cannot_cancel_someone_elses_reservation`, `test_cancel_over_http_and_other_user_forbidden`, `test_rlrs8_remote_info_restricted_to_confirmed_holder_and_staff` | Pass |
 
 Add new rows:
 | Test case | Scenario | Expected | Automated test | Result |

@@ -105,7 +105,7 @@ function bookingForm() {
     const end = new Date(s.start); end.setMinutes(end.getMinutes() + +dur.value);
     const r = await api("POST", "/api/reservations", { equipment_id: state.eqId, start: s.start.slice(0, 16), end: `${ymd(end)}T${pad(end.getHours())}:${pad(end.getMinutes())}` });
     say(r.status === "Pending" ? "Request sent: waiting for approval." : "Reservation confirmed. A confirmation email is queued.");
-    state.sel = null; await loadSlots(); render();
+    state.sel = null; state.equipment = await api("GET", "/api/equipment"); await loadSlots(); render();
   });
   return h("div", { class: "card" }, h("h2", {}, "Book this slot"),
     h("div", { class: "row" }, h("div", {}, h("strong", {}, state.equipment.find(e => e.id === state.eqId).name), h("div", { class: "muted" }, dtLocal(s.start))),
@@ -120,7 +120,7 @@ async function mineView() {
   return h("div", { class: "card" }, h("h2", {}, "My reservations"), rows.length ? h("div", { class: "scroll" }, h("table", {},
     h("thead", {}, h("tr", {}, ["Equipment", "Lab", "Start", "End", "Status", ""].map(x => h("th", {}, x)))),
     h("tbody", {}, rows.map(r => h("tr", {}, h("td", {}, r.equipment), h("td", {}, r.lab), h("td", {}, dtLocal(r.start)), h("td", {}, hm(r.end)),
-      h("td", {}, h("span", { class: `tag ${r.status}` }, r.status), r.reason ? h("div", { class: "muted" }, r.reason) : null),
+      h("td", {}, h("span", { class: `tag ${r.status}` }, r.status), r.reason ? h("div", { class: "muted" }, r.reason) : null, r.remote_info ? h("div", { class: "muted" }, "Remote access: " + r.remote_info) : null),
       h("td", {}, ["Pending", "Confirmed"].includes(r.status) ? h("button", { class: "danger", onclick: cancel(r.id) }, "Cancel") : null)))))) : h("p", { class: "muted" }, "You have no reservations yet."));
 }
 
