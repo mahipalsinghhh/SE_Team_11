@@ -1,0 +1,4 @@
+blood_donation.py:7:80: E501 line too long (82 > 79 characters)
+blood_donation.py:58:1: E303 too many blank lines (3)
+blood_donation.py:80:43: E261 at least two spaces before inline comment
+blood_donation.py:81:13: E225 missing whitespace around operator

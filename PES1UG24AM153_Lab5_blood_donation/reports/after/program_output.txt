@@ -1,0 +1,6 @@
+Stock: {'A+': 0, 'A-': 0, 'B+': 0, 'B-': 0, 'O+': 2, 'O-': 1, 'AB+': 0, 'AB-': 0}
+Units for an A+ patient: 3
+Units for a Z+ patient: 0
+Is O- universal? True
+Low stock groups: ['A+', 'A-', 'B+', 'B-', 'O-', 'AB+', 'AB-']
+Donors eligible today: []

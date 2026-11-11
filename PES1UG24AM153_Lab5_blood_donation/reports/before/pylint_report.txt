@@ -1,0 +1,33 @@
+************* Module blood_donation
+blood_donation.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+blood_donation.py:17:0: C0116: Missing function or method docstring (missing-function-docstring)
+blood_donation.py:17:0: C0103: Function name "registerDonor" doesn't conform to snake_case naming style (invalid-name)
+blood_donation.py:17:18: C0103: Argument name "donorName" doesn't conform to snake_case naming style (invalid-name)
+blood_donation.py:17:29: C0103: Argument name "bloodGroup" doesn't conform to snake_case naming style (invalid-name)
+blood_donation.py:17:46: C0103: Argument name "lastDonation" doesn't conform to snake_case naming style (invalid-name)
+blood_donation.py:17:0: W0102: Dangerous default value [] as argument (dangerous-default-value)
+blood_donation.py:27:0: C0116: Missing function or method docstring (missing-function-docstring)
+blood_donation.py:27:0: C0103: Function name "canDonate" doesn't conform to snake_case naming style (invalid-name)
+blood_donation.py:33:0: C0116: Missing function or method docstring (missing-function-docstring)
+blood_donation.py:33:0: C0103: Function name "recordDonation" doesn't conform to snake_case naming style (invalid-name)
+blood_donation.py:33:19: C0103: Argument name "donorName" doesn't conform to snake_case naming style (invalid-name)
+blood_donation.py:42:0: C0116: Missing function or method docstring (missing-function-docstring)
+blood_donation.py:42:0: C0103: Function name "unitsFor" doesn't conform to snake_case naming style (invalid-name)
+blood_donation.py:42:13: C0103: Argument name "patientGroup" doesn't conform to snake_case naming style (invalid-name)
+blood_donation.py:45:11: W0718: Catching too general exception Exception (broad-exception-caught)
+blood_donation.py:49:0: C0116: Missing function or method docstring (missing-function-docstring)
+blood_donation.py:49:0: C0103: Function name "isUniversal" doesn't conform to snake_case naming style (invalid-name)
+blood_donation.py:49:16: C0103: Argument name "bloodGroup" doesn't conform to snake_case naming style (invalid-name)
+blood_donation.py:50:11: R1714: Consider merging these comparisons with 'in' by using 'bloodGroup in ('O-', 'AB+')'. Use a set instead if elements are hashable. (consider-using-in)
+blood_donation.py:53:0: C0116: Missing function or method docstring (missing-function-docstring)
+blood_donation.py:53:0: C0103: Function name "lowStock" doesn't conform to snake_case naming style (invalid-name)
+blood_donation.py:58:0: C0116: Missing function or method docstring (missing-function-docstring)
+blood_donation.py:58:0: C0103: Function name "donorSheetPath" doesn't conform to snake_case naming style (invalid-name)
+blood_donation.py:63:0: C0116: Missing function or method docstring (missing-function-docstring)
+blood_donation.py:63:0: C0103: Function name "notifyDonors" doesn't conform to snake_case naming style (invalid-name)
+blood_donation.py:63:17: C0103: Argument name "phoneList" doesn't conform to snake_case naming style (invalid-name)
+blood_donation.py:68:0: C0116: Missing function or method docstring (missing-function-docstring)
+
+-----------------------------------
+Your code has been rated at 4.81/10
+
