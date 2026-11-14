@@ -1,0 +1,10 @@
+bike_share_stations.py:5:80: E501 line too long (106 > 79 characters)
+bike_share_stations.py:9:80: E501 line too long (131 > 79 characters)
+bike_share_stations.py:15:80: E501 line too long (91 > 79 characters)
+bike_share_stations.py:17:80: E501 line too long (89 > 79 characters)
+bike_share_stations.py:26:80: E501 line too long (90 > 79 characters)
+bike_share_stations.py:27:5: F841 local variable 'summary' is assigned to but never used
+bike_share_stations.py:27:28: W291 trailing whitespace
+bike_share_stations.py:33:80: E501 line too long (81 > 79 characters)
+bike_share_stations.py:39:80: E501 line too long (91 > 79 characters)
+bike_share_stations.py:40:15: E711 comparison to None should be 'if cond is None:'
