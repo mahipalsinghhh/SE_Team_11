@@ -40,7 +40,7 @@ table("Product Backlog (RLRS)",SRC+"  15 stories = 74 story points; RLRS-16..19 
 s1=[[k,s,p,o,"Carried over (not Done at sprint close)"] for k,s,p,o,sp,t in I if "1" in sp.split(",")]
 table("Sprint 1 - Foundation (27-31 Oct 2026, CLOSED)",SRC+"  Committed 26 pts; 0 pts completed when closed on 31 Oct; all 5 stories carried into Sprint 2.",s1,["Key","Summary","Pts","Assignee","Outcome at sprint close"],[.09,.41,.06,.17,.27],"03_sprint1_backlog.png")
 s2=[[k,s,p,o,"Done "+t.strftime("%d %b")] for k,s,p,o,sp,t in I if "2" in sp.split(",")]
-table("Sprint 2 - Build and Test (2-7 Nov 2026)",SRC+"  Scope 74 pts (includes 26 pts carried over). Sprint was never formally closed in Jira (state: active).",s2,["Key","Summary","Pts","Assignee","Completed"],[.09,.46,.06,.19,.2],"04_sprint2_backlog.png")
+table("Sprint 2 - Build and Test (2-7 Nov 2026)",SRC+"  Scope 74 pts (includes 26 pts carried over). Sprint closed in Jira on 17 Nov 2026.",s2,["Key","Summary","Pts","Assignee","Completed"],[.09,.46,.06,.19,.2],"04_sprint2_backlog.png")
 # burndown
 def burn(name,scope,start,end,items,fn,xmax=None):
     fig,ax=plt.subplots(figsize=(11,5.2))
