@@ -27,7 +27,7 @@ SE_Team_11/
 
 - **Problem statement:** A booking portal for students to reserve lab equipment timeslots, view calendar availability, and receive automated email reminders. It combines calendar UI widgets, RESTful endpoints, and a scheduling engine with conflict detection.
 - **Stack:** standard-library Python + SQLite + plain HTML/JS calendar (see `MIni Project/rlrs/README.md`), pytest, GitHub Actions.
-- **Status:** working app with 67 passing tests and a passing browser test, run on Linux only: see `MIni Project/HANDOFF.md` for what is verified and what is not.
+- **Status:** working app with 71 passing pytest tests (Linux and macOS runs recorded; GitHub Actions CI on Linux, Windows and macOS) and a 9-step browser test: see `MIni Project/HANDOFF.md` for what is verified and what is not.
 - **Jira:** project key `RLRS` (Scrum board). Sprint 1: 27-31 Oct. Sprint 2: 2-7 Nov. Presentation: 9 Nov 2026.
 
 Run the tests: `cd "MIni Project/rlrs"`, create a virtual environment, `pip install -r requirements.txt`, `python -m pytest -v`.
