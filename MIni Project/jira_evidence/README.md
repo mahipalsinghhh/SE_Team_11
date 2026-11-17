@@ -12,10 +12,13 @@ Project: Remote Lab Reservation System. Jira project key `RLRS`, board 36.
 | `06_burndown_sprint2.png` | Burndown, Sprint 2 |
 | `07_sprint_progress.png` | Sprint progress |
 
-## How these were made (please read)
+## Real Jira screenshots
+The `screenshots/` folder holds real screenshots taken from the Jira web UI on 17 Nov 2026 (Summary, Reports, Board, Backlog). The Board and Backlog screenshots look empty because both sprints had already been completed in Jira, so no sprint is active and every work item is Done. Per-sprint contents are in the images below.
+
+## How the numbered images below were made (please read)
 These images were **rendered from the Jira API data (issue fields and change history) on 17 Nov 2026**, not captured from the Jira web UI. Each image says so in its footer. `generate_images.py` holds the exact data and the code.
 
 ## What the data shows (no spin)
 - Sprint 1 committed 26 pts (RLRS-1..5). None were Done when the sprint was closed on 31 Oct; all five carried into Sprint 2.
 - Sprint 2 scope was 74 pts. 22 pts were marked Done on 5 Nov and the other 52 pts on 11 Nov, **after** the planned sprint end (7 Nov). The burndown therefore shows the work finishing late.
-- Sprint 2 was never formally closed in Jira (its state is still "active").
+- Sprint 2 was completed (closed) in Jira on 17 Nov 2026, after the planned end of 7 Nov.
