@@ -1,0 +1,11 @@
+# Lab 5 — Identified Issues (`tower_maintenance.py`)
+
+| Issue | Type | Line(s) | Description | Fix Approach |
+|---|---|---|---|---|
+| SQL Injection (`B608`) | Security (Medium, Bandit) | 11 | `addTower` formatted `site`, `last_service`, and `faults` directly into the SQL string using `%` formatting. | Replaced with parameterized SQL query (`VALUES (?, ?, ?)`) passing `(site, last_service, faults)` as bind parameters. |
+| Unsafe `pickle` deserialization (`B301`, `B403`) | Security (Medium/Low, Bandit) | 1, 43 | `snapshot()` serialized and deserialized SQLite rows using `pickle.loads(pickle.dumps(...))`, which exposes CWE-502 deserialization risks. | Replaced `pickle` with `json.loads(json.dumps(rows))` and removed the `pickle` import. |
+| Hardcoded password (`B105`) | Security (Low, Bandit) | 6 | `NOC_PASSWORD = "tower-noc-77"` stored a hardcoded credential in source code (CWE-259). | Replaced with `os.environ.get("NOC_PASSWORD", "")` so credentials are not hardcoded. |
+| Broad exception handling (`W0718`) | Logic / Quality (Warning, Pylint) | 20 | `serviceTower` caught broad `Exception` without logging the underlying error. | Narrowed exception handling to `sqlite3.Error as err` and printed the specific error. |
+| Global state mutation (`W0603`) | Design / Maintainability (Warning, Pylint) | 7, 16, 19 | `service_count` was mutated via `global service_count` inside `serviceTower`. | Encapsulated `conn` and `service_count` inside a `TowerTracker` class. |
+| `None` dereference risk in `riskLevel` | Robustness / Logic | 35–36 | `row = ...fetchone()` was indexed as `row[0]` without checking if `row is None` for a missing `tower_id`. | Added `if row is not None and row[0] > 3:` guard and removed the unnecessary `else` after `return` (`R1705`). |
+| Naming, docstrings, and PEP 8 style (`C0103`, `C0114`, `C0116`, `E501`, `E303`, `E225`) | Style / Readability (Pylint & Flake8) | 1–54 | CamelCase function names (`addTower`, `serviceTower`, `riskLevel`), missing module/function docstrings, lines > 79 chars, 3 blank lines, and missing whitespace around `=` on line 50. | Renamed functions to `snake_case`, added docstrings, wrapped lines <= 79 chars, fixed blank lines and operator spacing. |
