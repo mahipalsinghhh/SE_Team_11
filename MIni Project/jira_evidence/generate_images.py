@@ -61,9 +61,9 @@ burn("Burndown - Sprint 2 - Build and Test (74 pts scope)",74,s2s,s2e,[(p,t) for
 # progress
 fig,ax=plt.subplots(figsize=(10,4.5))
 lab=["Sprint 1\n(26 pts)","Sprint 2\n(74 pts)"]
-ax.barh(lab,[0,74],color=TEAL,label="Done"); ax.barh(lab,[26,0],left=[0,74],color="#C9D6D9",label="Not done at close")
+ax.barh(lab,[0,74],color=TEAL,label="Done"); ax.barh(lab,[26,0],left=[0,74],color="#C9D6D9",label="Not done at sprint close (carried over)")
 ax.barh(["Sprint 2\n(74 pts)"],[22],color=AMB,label="Done by sprint end (5 Nov): 22 pts") if False else None
-ax.text(13,0,"0 done / 26",ha="center",va="center"); ax.text(37,1,"74 / 74 Done (22 pts by 5 Nov, 52 pts on 11 Nov)",ha="center",va="center",color="white",weight="bold")
+ax.text(13,0,"0 / 26 done at close (31 Oct)\nall 5 finished later in Sprint 2",ha="center",va="center",fontsize=9); ax.text(37,1,"74 / 74 Done (22 pts by 5 Nov, 52 pts on 11 Nov)",ha="center",va="center",color="white",weight="bold")
 ax.set_xlim(0,80); ax.set_xlabel("Story points"); ax.legend(loc="lower right"); ax.set_title("Sprint progress",color=NAVY,weight="bold",loc="left")
 fig.text(.01,.01,SRC,fontsize=8,color=GREY); fig.tight_layout(rect=[0,.04,1,1]); fig.savefig("07_sprint_progress.png",dpi=150); plt.close(fig)
 # dashboard
