@@ -12,8 +12,17 @@ Project: Remote Lab Reservation System. Jira project key `RLRS`, board 36.
 | `06_burndown_sprint2.png` | Burndown, Sprint 2 |
 | `07_sprint_progress.png` | Sprint progress |
 
-## Real Jira screenshots
-The `screenshots/` folder holds real screenshots taken from the Jira web UI on 17 Nov 2026 (Summary, Reports, Board, Backlog). The Board and Backlog screenshots look empty because both sprints had already been completed in Jira, so no sprint is active and every work item is Done. Per-sprint contents are in the images below.
+## Real Jira screenshots (`screenshots/`)
+Taken from the Jira web UI on 17 Nov 2026.
+
+| File | Shows |
+|---|---|
+| `01_board_after_sprints_closed.png`, `02_backlog_after_sprints_closed.png` | Board and Backlog. They look empty because both sprints are completed in Jira and every work item is Done |
+| `03_reports_status_type_assignee.png`, `04_reports_trends.png` | Reports: status, type, assignee, creation trend, cycle time |
+| `05_summary_status_overview.png`, `06_summary_priority_types.png` | Project Summary: 19 of 19 work items Done |
+| `07_burndown_sprint2_jira.png` | Jira burndown, Sprint 2 (74 pts, work completed 5 Nov and 11 Nov) |
+| `08_burndown_sprint1_jira.png` | Jira burndown, Sprint 1 (26 pts committed, none burned down) |
+| `09_sprint1_report_scope_changes.png`, `10_sprint1_report_incomplete_items.png` | Jira Sprint 1 report: scope log and the 5 stories carried over (now Done) |
 
 ## How the numbered images below were made (please read)
 These images were **rendered from the Jira API data (issue fields and change history) on 17 Nov 2026**, not captured from the Jira web UI. Each image says so in its footer. `generate_images.py` holds the exact data and the code.
