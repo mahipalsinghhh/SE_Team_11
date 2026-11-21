@@ -1,0 +1,7 @@
+$ python bike_share_stations.py
+Rental outcomes: True False
+Unlock PIN: 8099
+Full stations: ['Library Gate']
+Library bikes available: False
+
+Exit code: 0

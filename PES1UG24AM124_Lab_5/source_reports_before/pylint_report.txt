@@ -1,0 +1,26 @@
+************* Module bike_share_stations
+bike_share_stations.py:5:0: C0301: Line too long (106/100) (line-too-long)
+bike_share_stations.py:9:0: C0301: Line too long (131/100) (line-too-long)
+bike_share_stations.py:27:27: C0303: Trailing whitespace (trailing-whitespace)
+bike_share_stations.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+bike_share_stations.py:8:0: C0116: Missing function or method docstring (missing-function-docstring)
+bike_share_stations.py:8:0: C0103: Function name "addStation" doesn't conform to snake_case naming style (invalid-name)
+bike_share_stations.py:8:0: W0102: Dangerous default value [] as argument (dangerous-default-value)
+bike_share_stations.py:14:0: C0116: Missing function or method docstring (missing-function-docstring)
+bike_share_stations.py:14:0: C0103: Function name "rentBike" doesn't conform to snake_case naming style (invalid-name)
+bike_share_stations.py:14:0: R1710: Either all return statements in a function should return an expression, or none of them should. (inconsistent-return-statements)
+bike_share_stations.py:21:0: C0116: Missing function or method docstring (missing-function-docstring)
+bike_share_stations.py:21:0: C0103: Function name "unlockPin" doesn't conform to snake_case naming style (invalid-name)
+bike_share_stations.py:25:0: C0116: Missing function or method docstring (missing-function-docstring)
+bike_share_stations.py:25:0: C0103: Function name "fullStations" doesn't conform to snake_case naming style (invalid-name)
+bike_share_stations.py:27:4: W0612: Unused variable 'summary' (unused-variable)
+bike_share_stations.py:31:0: C0116: Missing function or method docstring (missing-function-docstring)
+bike_share_stations.py:31:0: C0103: Function name "resetStation" doesn't conform to snake_case naming style (invalid-name)
+bike_share_stations.py:34:11: W0718: Catching too general exception Exception (broad-exception-caught)
+bike_share_stations.py:38:0: C0116: Missing function or method docstring (missing-function-docstring)
+bike_share_stations.py:38:0: C0103: Function name "hasBikes" doesn't conform to snake_case naming style (invalid-name)
+bike_share_stations.py:40:7: C0121: Comparison 'row[0] == None' should be 'row[0] is None' (singleton-comparison)
+bike_share_stations.py:45:0: C0116: Missing function or method docstring (missing-function-docstring)
+
+-----------------------------------
+Your code has been rated at 3.89/10

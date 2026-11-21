@@ -1,0 +1,7 @@
+$ python -m pylint --persistent=no bike_share_stations.py
+
+------------------------------------
+Your code has been rated at 10.00/10
+
+
+Exit code: 0
