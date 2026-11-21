@@ -1,0 +1,92 @@
+FFF...F                                                                  [100%]
+=================================== FAILURES ===================================
+___________________________ test_cart_total_no_crash ___________________________
+test_shopping_cart.py:14: in test_cart_total_no_crash
+    def test_cart_total_no_crash(s):
+test_shopping_cart.py:16: in test_cart_total_no_crash
+    result = cart_total(s)
+shopping_cart.py:6: in cart_total
+    for item in cart.split(','):
+E   AttributeError: 'NoneType' object has no attribute 'split'
+E   Failing test case: test_cart_total_no_crash(
+E       s=None,
+E   )
+_________________________ test_promo_percent_no_crash __________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "test_shopping_cart.py", line 24, in test_promo_percent_no_crash
+  |     def test_promo_percent_no_crash(s):
+  | exceptiongroup.ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "test_shopping_cart.py", line 26, in test_promo_percent_no_crash
+    |     result = promo_percent(s)
+    |   File "shopping_cart.py", line 13, in promo_percent
+    |     return int(code.upper().split('OFF')[1])
+    | IndexError: list index out of range
+    | Failing test case: test_promo_percent_no_crash(
+    |     s='',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "test_shopping_cart.py", line 26, in test_promo_percent_no_crash
+    |     result = promo_percent(s)
+    |   File "shopping_cart.py", line 13, in promo_percent
+    |     return int(code.upper().split('OFF')[1])
+    | AttributeError: 'NoneType' object has no attribute 'upper'
+    | Failing test case: test_promo_percent_no_crash(
+    |     s=None,
+    | )
+    +------------------------------------
+_________________________ test_delivery_zone_no_crash __________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "test_shopping_cart.py", line 34, in test_delivery_zone_no_crash
+  |     def test_delivery_zone_no_crash(s):
+  | exceptiongroup.ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "test_shopping_cart.py", line 36, in test_delivery_zone_no_crash
+    |     result = delivery_zone(s)
+    |   File "shopping_cart.py", line 16, in delivery_zone
+    |     return ZONES[pincode[0]]
+    | KeyError: '0'
+    | Failing test case: test_delivery_zone_no_crash(
+    |     s='0',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "test_shopping_cart.py", line 36, in test_delivery_zone_no_crash
+    |     result = delivery_zone(s)
+    |   File "shopping_cart.py", line 16, in delivery_zone
+    |     return ZONES[pincode[0]]
+    | IndexError: string index out of range
+    | Failing test case: test_delivery_zone_no_crash(
+    |     s='',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "test_shopping_cart.py", line 36, in test_delivery_zone_no_crash
+    |     result = delivery_zone(s)
+    |   File "shopping_cart.py", line 16, in delivery_zone
+    |     return ZONES[pincode[0]]
+    | TypeError: 'NoneType' object is not subscriptable
+    | Failing test case: test_delivery_zone_no_crash(
+    |     s=None,
+    | )
+    +------------------------------------
+_______________ test_delivery_zone_unknown_first_digit_rejected ________________
+test_shopping_cart.py:70: in test_delivery_zone_unknown_first_digit_rejected
+    def test_delivery_zone_unknown_first_digit_rejected(pincode):
+test_shopping_cart.py:72: in test_delivery_zone_unknown_first_digit_rejected
+    delivery_zone(pincode)
+shopping_cart.py:16: in delivery_zone
+    return ZONES[pincode[0]]
+E   KeyError: '0'
+E   Failing test case: test_delivery_zone_unknown_first_digit_rejected(
+E       pincode='000000',
+E   )
+=========================== short test summary info ============================
+FAILED test_shopping_cart.py::test_cart_total_no_crash - AttributeError: 'Non...
+FAILED test_shopping_cart.py::test_promo_percent_no_crash - exceptiongroup.Ex...
+FAILED test_shopping_cart.py::test_delivery_zone_no_crash - exceptiongroup.Ex...
+FAILED test_shopping_cart.py::test_delivery_zone_unknown_first_digit_rejected
+4 failed, 3 passed in 0.41s
