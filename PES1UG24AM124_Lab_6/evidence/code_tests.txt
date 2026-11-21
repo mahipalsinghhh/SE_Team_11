@@ -1,0 +1,5 @@
+$ python -m coverage run --data-file=.coverage.code --source=shopping_cart -m pytest CodeCoverageTest_shopping_cart.py -q
+..............                                                           [100%]
+14 passed in 0.13s
+
+Exit code: 0

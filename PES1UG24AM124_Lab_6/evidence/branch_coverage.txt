@@ -1,0 +1,8 @@
+$ python -m coverage report --data-file=.coverage.branch -m
+Name               Stmts   Miss Branch BrPart  Cover   Missing
+--------------------------------------------------------------
+shopping_cart.py      33      0     22      0   100%
+--------------------------------------------------------------
+TOTAL                 33      0     22      0   100%
+
+Exit code: 0

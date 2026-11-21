@@ -1,0 +1,4 @@
+$ python -m coverage html --data-file=.coverage.branch -d evidence/coverage_html
+Wrote HTML report to evidence/coverage_html/index.html
+
+Exit code: 0

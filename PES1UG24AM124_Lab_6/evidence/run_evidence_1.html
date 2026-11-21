@@ -1,0 +1,15 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{box-sizing:border-box}body{margin:0;padding:32px;background:#f4efec;color:#251f21;font:18px Arial,sans-serif}.card{padding:28px;background:white;border-radius:16px}h1{font-size:29px;margin:0 0 12px}h2{font-size:17px;color:#376e60;margin-top:24px}p{font-size:15px;color:#585254}pre{font:14px/1.5 'DejaVu Sans Mono',monospace;white-space:pre-wrap;overflow-wrap:anywhere;border-top:1px solid #eae9ea;padding-top:14px}</style></head><body><div class="card"><h1>Lab 6: Statement coverage</h1><p>Venkat Kushal | PES1UG24AM124</p><p>Readable rendering of captured run output. Original text logs are included.</p><h2>code_tests.txt</h2><pre>$ python -m coverage run --data-file=.coverage.code --source=shopping_cart -m pytest CodeCoverageTest_shopping_cart.py -q
+..............                                                           [100%]
+14 passed in 0.13s
+
+Exit code: 0
+</pre><h2>code_coverage.txt</h2><pre>$ python -m coverage report --data-file=.coverage.code -m
+Name               Stmts   Miss  Cover   Missing
+------------------------------------------------
+shopping_cart.py      33      0   100%
+------------------------------------------------
+TOTAL                 33      0   100%
+
+Exit code: 0
+</pre></div></body></html>
