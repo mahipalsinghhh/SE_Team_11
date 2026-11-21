@@ -1,0 +1,5 @@
+$ python -m pytest test_shopping_cart.py -q --tb=short
+..........................                                               [100%]
+26 passed in 2.06s
+
+Exit code: 0
