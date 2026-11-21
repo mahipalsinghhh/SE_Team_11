@@ -1,0 +1,17 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-9.2.0, pluggy-1.7.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /downloads/lab7/after
+plugins: hypothesis-6.168.5, platformdirs-4.12.4, anyio-4.16.0
+collecting ... collected 7 items
+
+test_shopping_cart.py::test_cart_total_no_crash PASSED                   [ 14%]
+test_shopping_cart.py::test_promo_percent_no_crash PASSED                [ 28%]
+test_shopping_cart.py::test_delivery_zone_no_crash PASSED                [ 42%]
+test_shopping_cart.py::test_cart_total_matches_sum PASSED                [ 57%]
+test_shopping_cart.py::test_promo_percent_valid_codes PASSED             [ 71%]
+test_shopping_cart.py::test_delivery_zone_valid_pincodes PASSED          [ 85%]
+test_shopping_cart.py::test_delivery_zone_unknown_first_digit_rejected PASSED [100%]
+
+============================== 7 passed in 1.61s ===============================
